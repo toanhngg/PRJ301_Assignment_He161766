@@ -6,4 +6,65 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
     Created on : Oct 14, 2022, 12:07:03 AM
     Author     : admin
 */
+.container{
+    margin-left: 180px;
+    margin-right: 180px;
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.header1{
+    display: flex;
+    justify-content: space-between;
+}
+.header1 
+.header1 strong{
+    font-size: 15px;
+}
+.header2{
+    display: flex;
+    justify-content: space-between;
+    background-color: #F3F3F3;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+#homee{
+    margin-left: 20px;
+}
+.choose{
+    margin-right: 20px;
+}
+.choose a {
+    background-color: #0fcc45;
+    padding: 3px;
+    border-radius: 2px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+.content{
+    margin-top: 50px;
+    box-sizing: border-box;
+}
+.content td{
+       border-bottom: 1px solid #f0f0f0;
+    background-color: #fff;
+    width: 13.5%;
+}
+#last2{
+    font-size: 13px;
+    font-weight: 100;
+}
+#last2 a {
+    color: #6b90da;
+        text-decoration: none;
 
+}
+#last3{
+    font-size: 13px;
+    font-weight: 100;   
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+
+}
+#last3 p a {
+    color: #6b90da;
+    text-decoration: none;
+}

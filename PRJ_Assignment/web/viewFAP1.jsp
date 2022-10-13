@@ -15,8 +15,8 @@
     <body>
         <div class="container"> 
         <div class="header1">
-            <div>
-                <h1><span>FPT University Academic Portal</span></h1>
+            <div id="head">
+                <h1><span id="head">FPT University Academic Portal</span></h1>
             </div>
             <div>
                 <table>
@@ -48,6 +48,8 @@
                 <tr>
                     <td>
                         <div class="content1">
+                            <div class="nd">
+                                
                             <h2>Activities for
                                 <span>AnhNTHE161766 (Nguyễn Tố Anh)</span></h2>
                             <p>
@@ -58,7 +60,7 @@
                                 <b>Chú thích</b>: Các hoạt động trong bảng dưới không bao gồm hoạt động ngoại khóa,
                                 ví dụ như hoạt động câu lạc bộ ...
                             </p>
-                            <div id="">
+                            <div>
                                 <p>
                                     Các phòng bắt đầu bằng AL thuộc tòa nhà Alpha. VD: AL...<br />
                                     Các phòng bắt đầu bằng BE thuộc tòa nhà Beta. VD: BE,..<br />
@@ -68,6 +70,8 @@
                                     Little UK (LUK) thuộc tầng 5 tòa nhà Delta
                                 </p>
                             </div>
+                                                        </div>
+
                             <table class="timetable">
                                 <thead class="date">
                                     
@@ -205,11 +209,11 @@
                                         <td>-</td>
                                     </tr><tr>
                                         <td>Slot 5 </td>
-                                        <td><p><a id="sub" href=''>PRJ301-<a id="materials" href='https://bom.so/c4uYVb' target='_blank'>View Materials</a><br/> at DE-C203 <a > <br/>(<font color=Green>attended</font>)<br/><span id="time">(14:30-16:00)</span><br/></p></td>
+                                        <td><p><a id="sub" href=''>PRJ301- <a id="materials" href='https://bom.so/c4uYVb' target='_blank'>View Materials</a><br/> at DE-C203 <a > <br/>(<font color=Green>attended</font>)<br/><span id="time">(14:30-16:00)</span><br/></p></td>
                                                         <td>-</td>
-                                        <td><p><a id="sub" href=''>PRJ301-<a id="materials" href='https://bom.so/c4uYVb' target='_blank'>View Materials</a><br/> at DE-C203 <a > <br/>(<font color=Green>attended</font>)<br/><span id="time">(14:30-16:00)</span><br/></p></td>
+                                        <td><p><a id="sub" href=''>PRJ301- <a id="materials" href='https://bom.so/c4uYVb' target='_blank'>View Materials</a><br/> at DE-C203 <a > <br/>(<font color=Green>attended</font>)<br/><span id="time">(14:30-16:00)</span><br/></p></td>
                                                                         <td>-</td>
-                                        <td><p><a id="sub" href=''>PRJ301-<a id="materials" href='https://bom.so/c4uYVb' target='_blank'>View Materials</a><br/> at DE-C203 - <a id="meet" href='https://meet.google.com/jpn-yopf-hpq' target='_blank'>Meet URL</a><a > <br/>(<font color=red>Not yet</font>)<br/><span id="time">(14:30-16:00)</span><br/></p></td>
+                                        <td><p><a id="sub" href=''>PRJ301- <a id="materials" href='https://bom.so/c4uYVb' target='_blank'>View Materials</a><br/> at DE-C203 - <a id="meet" href='https://meet.google.com/jpn-yopf-hpq' target='_blank'>Meet URL</a><a > <br/>(<font color=red>Not yet</font>)<br/><span id="time">(14:30-16:00)</span><br/></p></td>
                                         <td>-</td>
                                         <td>-</td>
                                     </tr><tr>
@@ -254,10 +258,10 @@
                         </div>
                     </td>
                 </tr>
-                <tr style="border-bottom: 0 none">
+                <tr>
                     <td>
                         <br />
-                        <table width="100%" style="border: 1px solid transparent;" id="cssTable">
+                        <table>
               <tr>
                   <td>
                       <div id="last2">

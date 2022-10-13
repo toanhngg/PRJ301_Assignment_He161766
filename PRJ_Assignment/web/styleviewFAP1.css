@@ -7,15 +7,22 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
     Author     : admin
 */
 .container{
-    margin-left: 155px;
-    margin-right: 155px;
+    margin-left: 180px;
+    margin-right: 180px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: normal;
+
 }
 .header1{
     display: flex;
     justify-content: space-between;
 }
+#head{
+    font-weight: normal;
+}
 .header1 strong{
     font-size: 15px;
+    font-weight: normal;
 }
 .header2{
     display: flex;
@@ -26,9 +33,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
 }
 #homee{
     margin-left: 20px;
+
+}
+#homee a{
+    text-decoration: none;
+
 }
 .choose{
     margin-right: 20px;
+    font-size: 11px;
+    font-weight: 700;
 }
 .choose a {
     background-color: #0fcc45;
@@ -38,13 +52,27 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
     color: white;
     font-weight: bold;
 }
+
+.choose span {
+    background-color: #0fcc45;
+    padding: 3px;
+    border-radius: 2px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+.nd{
+    font-size: 14px;
+}
+.nd h2{
+        font-weight: normal;
+
+}
 .content1 h2{
     margin-top: 50px;
     font-size: 30px;
 }
 .timetable {
-    /*    border-bottom: 2px solid black;
-        background-color: buttonhighlight;*/
     font-size: 14px;
 }
 .date{
@@ -54,7 +82,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
     height: 23px;
     background-color: #6b90da;
     text-align: left;
-    /*     padding: 2px;*/
 }
 .date th{
     font-weight: normal;
@@ -62,7 +89,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
 
 tbody td{
     box-sizing: border-box;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     border-bottom: 1px solid #f0f0f0;
     background-color: #fff;
     width: 13.5%;
@@ -112,7 +138,16 @@ tbody td{
     font-size: 13px;
     font-weight: 100;
 }
+#last2 a {
+    color: #6b90da;
+        text-decoration: none;
+
+}
 #last3{
     font-size: 13px;
     font-weight: 100;
+}
+#last3 p a {
+    color: #6b90da;
+    text-decoration: none;
 }
