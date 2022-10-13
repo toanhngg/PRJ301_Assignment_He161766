@@ -17,7 +17,7 @@
         <div class="container"> 
         <div class="header1">
             <div>
-                <h1><span>FPT University Academic Portal</span></h1>
+                <h1><span id="head">FPT University Academic Portal</span></h1>
             </div>
             <div>
                 <table>
@@ -36,14 +36,15 @@
         </div>
                 <div>
             <div  class="header2">
-                <span id="homee"><a href="">Home</a>&nbsp;|&nbsp;<b>View Schedule</b></span>
+                <span id="homee"><a href="">Home</a>&nbsp;| 
+                <a href="https://fap.fpt.edu.vn/Student.aspx">Activity</a>&nbsp;|&nbsp;<b>View</b></span>
                 <div class="choose">
                     <a href="">
                         <span>anhnthe161766</span></a> | <a href="">logout</a> |
                     <span>CAMPUS: FPTU-Hòa Lạc</span>
                 </div>
             </div>
-                    <h1>Activity detail</h1>
+                    <h1 id="head">Activity detail</h1>
                         
                         <table class="content">
         <tr>
