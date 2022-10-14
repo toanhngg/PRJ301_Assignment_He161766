@@ -3,12 +3,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
 */
 /* 
-    Created on : Oct 14, 2022, 12:07:03 AM
+    Created on : Oct 14, 2022, 7:54:05 AM
     Author     : admin
 */
+
 .container{
-    margin-left: 180px;
-    margin-right: 180px;
+    margin-left: 150px;
+    margin-right: 150px;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: normal;
 
@@ -63,11 +64,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
 .content{
     margin-top: 50px;
     box-sizing: border-box;
+    width: 100%;
+    text-align: center;
 }
 .content td{
-       border-bottom: 1px solid #f0f0f0;
+    border-bottom: 1px solid #f0f0f0;
     background-color: #fff;
-    width: 13.5%;
+    /*width: 10%;*/
+}
+#headertable td{
+    height: 23px;
+    background-color: #6b90da;
+    text-align: left;
 }
 #last2{
     font-size: 13px;

@@ -22,8 +22,7 @@
             <div>
                 <table>
                     <tr>
-                        <td><strong>FAP mobile app (myFAP) is ready at</strong></td>
-
+                        <td><strong  style=" font-weight: bold; font-size: 13px;">FAP mobile app (myFAP) is ready at</strong></td>
                     </tr>
                     <tr>
                         <td><a href="https://apps.apple.com/app/id1527723314">

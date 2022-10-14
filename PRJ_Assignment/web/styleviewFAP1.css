@@ -11,18 +11,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
     margin-right: 180px;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: normal;
+    font-size: 13px;
 
 }
 .header1{
     display: flex;
     justify-content: space-between;
+    margin-bottom: 30px;
 }
 #head{
     font-weight: normal;
 }
 .header1 strong{
-    font-size: 15px;
-    font-weight: normal;
+    font-size: 14px;
+    /*font-weight: normal;*/
 }
 .header2{
     display: flex;

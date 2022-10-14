@@ -1,6 +1,6 @@
 <%-- 
-    Document   : viewFAP3
-    Created on : Oct 14, 2022, 2:16:56 AM
+    Document   : viewFAP5
+    Created on : Oct 14, 2022, 10:01:58 AM
     Author     : admin
 --%>
 
@@ -10,11 +10,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <link href="styleviewFAP3.css" rel="stylesheet">
+                <link href="styleviewFAP3.css" rel="stylesheet">
 
     </head>
     <body>
-        <div class="container">
+         <div class="container">
             <div class="header1">
                 <div>
                     <h1><span style=" font-weight: normal;">FPT University Academic Portal</span></h1>
@@ -44,10 +44,8 @@
                     </div>
                 </div>
             </div>
-
-
-            <div>
-                <h2>Select a course, then a group ...</h2>
+             
+             <h2>Select a course, then a group ...</h2>
                 <table class="content">
                     <tr id="headertable">
                         <td>CAMPUS	</td><td>TERM	 </td><td> DEPARTMENT	 </td><td> COURSE	</td><td> 	GROUP </td>
@@ -98,37 +96,81 @@
                 
                  <table class="content">
                     <tr id="headertable">
-                        <td>INDEX</td><td>IMAGE</td><td>MEMBER</td><td>CODE</td><td>SURNAME</td><td>MIDDLE NAME</td><td>GIVEN NAME</td>
+                        <td>ID</td><td>NAME</td><td>Slot1</td><td>Slot1</td><td>Slot2</td><td>Slot3</td><td>Slot4</td><td>Slot5</td>
+                        <td>Slot6</td><td>Slot7</td><td>Slot8</td><td>Slot9</td><td>Slot10</td><td>Slot11</td><td>Slot12</td><td>Slot12</td>
+                        <td>Slot13</td> <td>Slot14</td> <td>Slot15</td> <td>Slot16</td> <td>Slot17</td> <td>Slot18</td> <td>Slot19</td> <td>Slot20</td>
+                         <td>Slot21</td> <td>Slot22</td> <td>Slot23</td> <td>Slot24</td> <td>Slot25</td> <td>Slot26</td> <td>Slot27</td> <td>Slot28</td> 
+                         <td>Slot29</td> <td>Slot30</td>
                     </tr>
                     <tr>
                         <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td>
                     </tr>
                     <tr>
                         <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td>
                     </tr>
                     <tr>
                         <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td>
                     </tr>
                     <tr>
                         <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td>
                     </tr>
                     <tr>
                         <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td>
                     </tr>
                     <tr>
                         <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td>
                     </tr>
                     <tr>
                         <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td>
                     </tr>
                     <tr>
                         <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td>
                     </tr>
                     <tr>
                         <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td>
                     </tr>
                     <tr>
+                       <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
                         <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td>
                     </tr>
                                  </table>
                  
@@ -150,6 +192,5 @@
                         </tr>
                         </div>
             </div>
-        </div>
     </body>
 </html>
