@@ -208,20 +208,22 @@
                                         <td>-</td>
                                     </tr><tr>
                                         <td>Slot 5 </td>
-                                        <td><p><a id="sub" href=''>PRJ301- <a id="materials" href='https://bom.so/c4uYVb' target='_blank'>View Materials</a><br/> at DE-C203 <a > <br/>(<font color=Green>attended</font>)<br/><span id="time">(14:30-16:00)</span><br/></p></td>
+                                        <td><p><a href="lecturer">PRJ301</a> <a id="materials" href='https://bom.so/c4uYVb' target='_blank'>View Materials</a><br/> at DE-C203 <a > <br/>(<font color=Green>attended</font>)<br/><span id="time">(14:30-16:00)</span><br/></p></td>
                                                         <td>-</td>
-                                        <td><p><a id="sub" href=''>PRJ301- <a id="materials" href='https://bom.so/c4uYVb' target='_blank'>View Materials</a><br/> at DE-C203 <a > <br/>(<font color=Green>attended</font>)<br/><span id="time">(14:30-16:00)</span><br/></p></td>
+                                      <td><p><a href="lecturer">SE1645</a><br/> at DE-C203 - <a id="meet" href='' target='_blank'>Meet URL</a> <br/>(<font color=Green>attended</font>)<br/><span id="time">(14:30-16:00)</span><br/></p></td>
+
+                                        <td><p><a id="sub"  href="lecturer">PRJ301</a><a id="materials" href='https://bom.so/c4uYVb' target='_blank'>View Materials</a><br/> at DE-C203 <a > <br/>(<font color=Green>attended</font>)<br/><span id="time">(14:30-16:00)</span><br/></p></td>
                                                                         <td>-</td>
-                                        <td><p><a id="sub" href=''>PRJ301- <a id="materials" href='https://bom.so/c4uYVb' target='_blank'>View Materials</a><br/> at DE-C203 - <a id="meet" href='https://meet.google.com/jpn-yopf-hpq' target='_blank'>Meet URL</a><a > <br/>(<font color=red>Not yet</font>)<br/><span id="time">(14:30-16:00)</span><br/></p></td>
+                                        <td><p><a id="sub" href="lecturer">PRJ301</a><a id="materials" href='https://bom.so/c4uYVb' target='_blank'>View Materials</a><br/> at DE-C203 - <a id="meet" href='https://meet.google.com/jpn-yopf-hpq' target='_blank'>Meet URL</a><a > <br/>(<font color=red>Not yet</font>)<br/><span id="time">(14:30-16:00)</span><br/></p></td>
                                         <td>-</td>
                                         <td>-</td>
                                     </tr><tr>
                                     <td>Slot 6 </td>
-                                        <td><p><a id="sub" href=''>MAS291- <a id="materials" href='https://bom.so/c4uYVb' target='_blank'>View Materials</a><br/> at DE-C203 <a > <br/>(<font color=Green>attended</font>)<br/><span id="time">(16:10-17:40)</span><br/></p></td>
-                                        <td><p><a id="sub" href=''>JPD123- <a id="materials" href='https://bom.so/c4uYVb' target='_blank'>View Materials</a><br/> at DE-C301 <a > <br/>(<font color=Green>attended</font>)<br/><span id="time">(16:10-17:40)</span><br/></p></td>
-                                        <td><p><a id="sub" href=''>MAS291- <a id="materials" href='https://bom.so/c4uYVb' target='_blank'>View Materials</a><br/> at DE-C203 <a > <br/>(<font color=Green>attended</font>)<br/><span id="time">(16:10-17:40)</span><br/></p></td>
+                                        <td><p><a href='lecturer'>PRJ301</a><a id="materials" href='https://bom.so/c4uYVb' target='_blank'>View Materials</a><br/> at DE-C203 <a > <br/>(<font color=Green>attended</font>)<br/><span id="time">(16:10-17:40)</span><br/></p></td>
+                                        <td><p><a id="sub" href="lecturer">JPD123- <a id="materials" href='https://bom.so/c4uYVb' target='_blank'>View Materials</a><br/> at DE-C301 <a > <br/>(<font color=Green>attended</font>)<br/><span id="time">(16:10-17:40)</span><br/></p></td>
+                                        <td><p><a id="sub" href="lecture">MAS291- <a id="materials" href='https://bom.so/c4uYVb' target='_blank'>View Materials</a><br/> at DE-C203 <a > <br/>(<font color=Green>attended</font>)<br/><span id="time">(16:10-17:40)</span><br/></p></td>
                                         <td>-</td>
-                                        <td><p><a id="sub" href=''>MAS291- <a id="materials" href='https://bom.so/c4uYVb' target='_blank'>View Materials</a><br/> at DE-C203 - <a id="meet" href='https://meet.google.com/jpn-yopf-hpq' target='_blank'>Meet URL</a><a > <br/>(<font color=red>Not yet</font>)<br/><span id="time">(16:10-17:40)</span><br/></p></td>
+                                        <td><p><a id="sub" href="lecturer">MAS291- <a id="materials" href='https://bom.so/c4uYVb' target='_blank'>View Materials</a><br/> at DE-C203 - <a id="meet" href='https://meet.google.com/jpn-yopf-hpq' target='_blank'>Meet URL</a><a > <br/>(<font color=red>Not yet</font>)<br/><span id="time">(16:10-17:40)</span><br/></p></td>
                                         <td>-</td>
                                         <td>-</td>
                                     </tr><tr>

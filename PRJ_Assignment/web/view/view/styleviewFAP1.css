@@ -74,6 +74,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
 }
 .timetable {
     font-size: 14px;
+    width: 100%;
 }
 .date{
     text-indent: initial;
@@ -91,7 +92,7 @@ tbody td{
     box-sizing: border-box;
     border-bottom: 1px solid #f0f0f0;
     background-color: #fff;
-    width: 13.5%;
+    /*width: 13.5%;*/
 }
 #materials{
     background-color: #f0ad4e;
@@ -150,4 +151,10 @@ tbody td{
 #last3 p a {
     color: #6b90da;
     text-decoration: none;
+}
+.option{
+   margin-left: auto;
+    margin-right: auto;
+   
+   
 }

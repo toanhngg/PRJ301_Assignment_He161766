@@ -96,7 +96,7 @@
                 
                  <table class="content">
                     <tr id="headertable">
-                        <td>ID</td><td>NAME</td><td>Slot1</td><td>Slot1</td><td>Slot2</td><td>Slot3</td><td>Slot4</td><td>Slot5</td>
+                        <td>ID</td><td>NAME</td><td>% Absent</td><td>Slot1</td><td>Slot2</td><td>Slot3</td><td>Slot4</td><td>Slot5</td>
                         <td>Slot6</td><td>Slot7</td><td>Slot8</td><td>Slot9</td><td>Slot10</td><td>Slot11</td><td>Slot12</td><td>Slot12</td>
                         <td>Slot13</td> <td>Slot14</td> <td>Slot15</td> <td>Slot16</td> <td>Slot17</td> <td>Slot18</td> <td>Slot19</td> <td>Slot20</td>
                          <td>Slot21</td> <td>Slot22</td> <td>Slot23</td> <td>Slot24</td> <td>Slot25</td> <td>Slot26</td> <td>Slot27</td> <td>Slot28</td> 
