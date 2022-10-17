@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
-        <servlet-name>lecturer</servlet-name>
-        <servlet-class>controller.lecturer</servlet-class>
+        <servlet-name>Timetable_Lecture</servlet-name>
+        <servlet-class>controller.Timetable_Lecture</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Check_Attendance</servlet-name>
+        <servlet-class>controller.Check_Attendance</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Report_Attemdance</servlet-name>
+        <servlet-class>controller.Report_Attemdance</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>lecturer</servlet-name>
-        <url-pattern>/lecturer</url-pattern>
+        <servlet-name>Timetable_Lecture</servlet-name>
+        <url-pattern>/lecture/timetable</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Check_Attendance</servlet-name>
+        <url-pattern>/lecture/check</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Report_Attemdance</servlet-name>
+        <url-pattern>/lecture/report</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

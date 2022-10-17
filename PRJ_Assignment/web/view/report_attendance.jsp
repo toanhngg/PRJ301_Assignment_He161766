@@ -1,6 +1,6 @@
 <%-- 
-    Document   : viewFAP4
-    Created on : Oct 14, 2022, 8:54:43 AM
+    Document   : viewFAP5
+    Created on : Oct 14, 2022, 10:01:58 AM
     Author     : admin
 --%>
 
@@ -14,7 +14,7 @@
 
     </head>
     <body>
-        <div class="container">
+         <div class="container">
             <div class="header1">
                 <div>
                     <h1><span style=" font-weight: normal;">FPT University Academic Portal</span></h1>
@@ -44,10 +44,8 @@
                     </div>
                 </div>
             </div>
-
-
-            <div>
-                <h2>Select a course, then a group ...</h2>
+             
+             <h2>Select a course, then a group ...</h2>
                 <table class="content">
                     <tr id="headertable">
                         <td>CAMPUS	</td><td>TERM	 </td><td> DEPARTMENT	 </td><td> COURSE	</td><td> 	GROUP </td>
@@ -98,71 +96,40 @@
                 
                  <table class="content">
                     <tr id="headertable">
-                        <td>INDEX</td><td>IMAGE</td><td>MEMBER</td><td>CODE</td><td>SURNAME</td><td>MIDDLE NAME</td><td>GIVEN NAME</td><td>STATUS</td><td>NOTE</td>
+                        <td>ID</td><td>NAME</td><td>% Absent</td><td>Slot1</td><td>Slot2</td><td>Slot3</td><td>Slot4</td><td>Slot5</td>
+                       
                     </tr>
                     <tr>
-                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
-                        <td> <input type="radio" name="atendance1" value="attended" > Attended &nbsp; &nbsp;&nbsp;
-                        <input type="radio" name="atendance1" value="absent"> Absent</td>
-                        <td> Note: <input type="text" name="note"> </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td>
                     </tr>
                     <tr>
-                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
-                        <td> <input type="radio" name="atendance2" value="attended"> Attended &nbsp; &nbsp;&nbsp;
-                        <input type="radio" name="atendance2" value="absent"> Absent</td>
-                        <td> Note: <input type="text" name="note"> </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td>
                     </tr>
                     <tr>
-                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
-                        <td> <input type="radio" name="atendance3" value="attended"> Attended &nbsp; &nbsp;&nbsp;
-                        <input type="radio" name="atendance3" value="absent"> Absent</td>
-                        <td> Note: <input type="text" name="note"> </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td>
                     </tr>
                     <tr>
-                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
-                        <td> <input type="radio" name="atendance4" value="attended"> Attended &nbsp; &nbsp;&nbsp;
-                        <input type="radio" name="atendance4" value="absent"> Absent</td>
-                        <td> Note: <input type="text" name="note"> </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td>
                     </tr>
                     <tr>
-                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
-                        <td> <input type="radio" name="atendance5" value="attended"> Attended &nbsp; &nbsp;&nbsp;
-                        <input type="radio" name="atendance5" value="absent"> Absent</td>
-                        <td> Note: <input type="text" name="note"> </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td>
                     </tr>
                     <tr>
-                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
-                        <td> <input type="radio" name="atendance6" value="attended"> Attended &nbsp; &nbsp;&nbsp;
-                        <input type="radio" name="atendance6" value="absent"> Absent</td>
-                        <td> Note: <input type="text" name="note"> </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td>
                     </tr>
                     <tr>
-                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
-                        <td> <input type="radio" name="atendance7" value="attended" checked> Attended &nbsp; &nbsp;&nbsp;
-                        <input type="radio" name="atendance7" value="absent"> Absent</td>
-                        <td> Note: <input type="text" name="note"> </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td>
                     </tr>
                     <tr>
-                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
-                        <td> <input type="radio" name="atendance8" value="attended"> Attended &nbsp; &nbsp;&nbsp;
-                        <input type="radio" name="atendance8" value="absent"> Absent</td>
-                        <td> Note: <input type="text" name="note"> </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td>
                     </tr>
                     <tr>
-                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
-                        <td> <input type="radio" name="atendance9" value="attended"> Attended &nbsp; &nbsp;&nbsp;
-                        <input type="radio" name="atendance9" value="absent"> Absent</td>
-                        <td> Note: <input type="text" name="note"> </td>
+                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td>
                     </tr>
                     <tr>
-                        <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td>
-                        <td> <input type="radio" name="atendance10" value="attended"> Attended &nbsp; &nbsp;&nbsp;
-                        <input type="radio" name="atendance10" value="absent"> Absent</td>
-                        <td> Note: <input type="text" name="note"> </td>
+                       <td>1</td><td>2 </td><td> 3 </td><td> 4 </td><td> 5 </td>
                     </tr>
-                    
                                  </table>
-                 <input style="align-content: center;" type="submit" name="Save" value="submit">
                  
                  <div id="last2">
                       <div>
@@ -182,6 +149,5 @@
                         </tr>
                         </div>
             </div>
-        </div>
     </body>
 </html>

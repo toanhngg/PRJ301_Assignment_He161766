@@ -10,7 +10,159 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <link href="styleviewFAP1.css" rel="stylesheet">
+        <!--<link href="styleviewFAP1.css" rel="stylesheet">-->
+        <style>
+            .container{
+    margin-left: 180px;
+    margin-right: 180px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: normal;
+    font-size: 13px;
+
+}
+.header1{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+#head{
+    font-weight: normal;
+}
+.header1 strong{
+    font-size: 14px;
+    /*font-weight: normal;*/
+}
+.header2{
+    display: flex;
+    justify-content: space-between;
+    background-color: #F3F3F3;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+#homee{
+    margin-left: 20px;
+}
+#homee a{
+    text-decoration: none;
+}
+.choose{
+    margin-right: 20px;
+    font-size: 11px;
+    font-weight: 700;
+}
+.choose a {
+    background-color: #0fcc45;
+    padding: 3px;
+    border-radius: 2px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.choose span {
+    background-color: #0fcc45;
+    padding: 3px;
+    border-radius: 2px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+.nd{
+    font-size: 14px;
+}
+.nd h2{
+        font-weight: normal;
+
+}
+.content1 h2{
+    margin-top: 50px;
+    font-size: 30px;
+}
+.timetable {
+    font-size: 14px;
+    width: 100%;
+}
+.date{
+    text-indent: initial;
+}
+.date tr{
+    height: 23px;
+    background-color: #6b90da;
+    text-align: left;
+}
+.date th{
+    font-weight: normal;
+}
+
+tbody td{
+    box-sizing: border-box;
+    border-bottom: 1px solid #f0f0f0;
+    background-color: #fff;
+    /*width: 13.5%;*/
+}
+#materials{
+    background-color: #f0ad4e;
+    color: white;
+    font-size: 75%;
+    border-radius: 0.25em;
+    text-align: center;
+    font-weight: 700;
+    padding: 0.2em 0.6em 0.3em;
+    text-decoration: none;
+
+}
+#meet{
+    background-color: #777;
+    font-weight: 700;
+    font-size: 75%;
+    border-radius: 0.25em;
+    padding: 0.2em 0.6em 0.3em;
+    color: white;
+    text-decoration: none;
+}
+#sub{
+    text-decoration: none;
+    color: cornflowerblue;
+}
+#time{
+    background-color: #5cb85c;
+    display: inline;
+    padding: 0.2em 0.6em 0.3em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25em;
+}
+.last{
+    font-size: 13px;
+    font-weight: 100;
+}
+#last2{
+    font-size: 13px;
+    font-weight: 100;
+}
+#last2 a {
+    color: #6b90da;
+        text-decoration: none;
+
+}
+#last3{
+    font-size: 13px;
+    font-weight: 100;
+}
+#last3 p a {
+    color: #6b90da;
+    text-decoration: none;
+}
+.option{
+   margin-left: auto;
+    margin-right: auto;
+   
+        </style>
     </head>
     <body>
         <div class="container"> 
@@ -49,16 +201,7 @@
                         <div class="content1">
                             <div class="nd">
                                 
-                            <h2>Activities for
-                                <span>AnhNTHE161766 (Nguyễn Tố Anh)</span></h2>
-                            <p>
-                                <b>Note</b>: These activities do not include extra-curriculum activities, such as
-                                club activities ...
-                            </p>
-                            <p>
-                                <b>Chú thích</b>: Các hoạt động trong bảng dưới không bao gồm hoạt động ngoại khóa,
-                                ví dụ như hoạt động câu lạc bộ ...
-                            </p>
+                                <h2>Lecture of week</h2>
                             <div>
                                 <p>
                                     Các phòng bắt đầu bằng AL thuộc tòa nhà Alpha. VD: AL...<br />
@@ -66,10 +209,23 @@
                                     Các phòng bắt đầu bằng G thuộc tòa nhà Gamma. VD: G201,...<br />
                                     Các phòng tập bằng đầu bằng R thuộc khu vực sân tập Vovinam.<br/>
                                     Các phòng bắt đầu bằng DE thuộc tòa nhà Delta. VD: DE,..<br/>
-                                    Little UK (LUK) thuộc tầng 5 tòa nhà Delta
                                 </p>
                             </div>
-                                                        </div>
+                            </div>
+                            <div class="option">
+                                <span>
+                                    Campus: 
+                                    <select name="campus">
+                                          <option value="HL">FU-HL</option>
+                                          <option value="HCM">FU-HCM</option>
+                                          <option value="DN" selected>FU-ÐN</option>
+                                          <option value="CT">FU-CT</option>
+                                    </select></br>
+                                    Lecture: <input type="text" name="lecture" value="lecture">
+                                    <input type="submit" value="Submit" name="View">
+                                </span>
+                                
+                            </div>
 
                             <table class="timetable">
                                 <thead class="date">
@@ -190,45 +346,42 @@
                                         <td>-</td>
                                     </tr><tr>
                                         <td>Slot 3 </td>
+                                        <td><p><a id="sub" href='check'>SE1648-PRN211- at DE-C301 <br/>(<font color=Green>attended</font>)<br/><span id="time">(16:10-17:40)</span><br/></p></td>
                                         <td>-</td>
                                         <td>-</td>
                                         <td>-</td>
+                                        <td><p><a id="sub" href='check'>SE1648-PRN211- at DE-C301 <br/>(<font color=Green>attended</font>)<br/><span id="time">(16:10-17:40)</span><br/></p></td>
                                         <td>-</td>
                                         <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                    </tr><tr>
+                                     </tr><tr>
                                         <td>Slot 4 </td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
+                                       <td><p><a id="sub" href='check'>SE1648-PRN211- at DE-C301 <br/>(<font color=Green>attended</font>)<br/><span id="time">(16:10-17:40)</span><br/></p></td>
+                                        <td><p><a id="sub" href='check'>SE1648-PRN211- at DE-C301 <br/>(<font color=Green>attended</font>)<br/><span id="time">(16:10-17:40)</span><br/></p></td>
+                                        <td><p><a id="sub" href='check'>SE1648-PRN211- at DE-C301 <br/>(<font color=Green>attended</font>)<br/><span id="time">(16:10-17:40)</span><br/></p></td>
+                                        <td><p><a id="sub" href='check'>SE1648-PRN211- at DE-C301 <br/>(<font color=Green>Attended</font>)<br/><span id="time">(16:10-17:40)</span><br/></p></td>
+                                        <td><p><a id="sub" href='check'>SE1648-PRN211- at DE-C301 <br/>(<font color=Green>Attended</font>)<br/><span id="time">(16:10-17:40)</span><br/></p></td>
+                                        <td><p><a id="sub" href='check'>SE1648-PRN211- at DE-C301 <br/>(<font color=red>Not yet</font>)<br/><span id="time">(16:10-17:40)</span><br/></p></td>
                                         <td>-</td>
                                     </tr><tr>
                                         <td>Slot 5 </td>
-                                        <td><p><a href="lecturer">PRJ301</a> <a id="materials" href='https://bom.so/c4uYVb' target='_blank'>View Materials</a><br/> at DE-C203 <a > <br/>(<font color=Green>attended</font>)<br/><span id="time">(14:30-16:00)</span><br/></p></td>
+                                        <td><p><a id="sub" href='check'>SE1645-PRJ301-at DE-C203 <br/>(<font color=Green>Attended</font>)<br/><span id="time">(14:30-16:00)</span><br/></p></td>
                                                         <td>-</td>
-                                      <td><p><a href="lecturer">SE1645</a><br/> at DE-C203 - <a id="meet" href='' target='_blank'>Meet URL</a> <br/>(<font color=Green>attended</font>)<br/><span id="time">(14:30-16:00)</span><br/></p></td>
-
-                                        <td><p><a id="sub"  href="lecturer">PRJ301</a><a id="materials" href='https://bom.so/c4uYVb' target='_blank'>View Materials</a><br/> at DE-C203 <a > <br/>(<font color=Green>attended</font>)<br/><span id="time">(14:30-16:00)</span><br/></p></td>
+                                        <td><p><a id="sub" href='check'>SE1646-PRJ301-at DE-C204 <br/>(<font color= Green>Attended</font>)<br/><span id="time">(14:30-16:00)</span><br/></p></td>
                                                                         <td>-</td>
-                                        <td><p><a id="sub" href="lecturer">PRJ301</a><a id="materials" href='https://bom.so/c4uYVb' target='_blank'>View Materials</a><br/> at DE-C203 - <a id="meet" href='https://meet.google.com/jpn-yopf-hpq' target='_blank'>Meet URL</a><a > <br/>(<font color=red>Not yet</font>)<br/><span id="time">(14:30-16:00)</span><br/></p></td>
+                                        <td><p><a id="sub" href='check'>SE1647-PRJ301-at DE-C206 <a > <br/>(<font color=Green>Attended</font>)<br/><span id="time">(14:30-16:00)</span><br/></p></td>
                                         <td>-</td>
                                         <td>-</td>
                                     </tr><tr>
                                     <td>Slot 6 </td>
-                                        <td><p><a href='lecturer'>PRJ301</a><a id="materials" href='https://bom.so/c4uYVb' target='_blank'>View Materials</a><br/> at DE-C203 <a > <br/>(<font color=Green>attended</font>)<br/><span id="time">(16:10-17:40)</span><br/></p></td>
-                                        <td><p><a id="sub" href="lecturer">JPD123- <a id="materials" href='https://bom.so/c4uYVb' target='_blank'>View Materials</a><br/> at DE-C301 <a > <br/>(<font color=Green>attended</font>)<br/><span id="time">(16:10-17:40)</span><br/></p></td>
-                                        <td><p><a id="sub" href="lecture">MAS291- <a id="materials" href='https://bom.so/c4uYVb' target='_blank'>View Materials</a><br/> at DE-C203 <a > <br/>(<font color=Green>attended</font>)<br/><span id="time">(16:10-17:40)</span><br/></p></td>
+                                        <td><p><a id="sub" href=''>SE1647-PRJ301-at DE-C206<br/> at DE-C203 <a > <br/>(<font color=Green>Attended</font>)<br/><span id="time">(16:10-17:40)</span><br/></p></td>
+                                        <td><p><a id="sub" href=''>SE1647-PRF301- at DE-C301 <a > <br/>(<font color=Green>Attended</font>)<br/><span id="time">(16:10-17:40)</span><br/></p></td>
+                                        <td><p><a id="sub" href=''>SE1648-PRN211- at DE-C301 <br/>(<font color=Green>Attended</font>)<br/><span id="time">(16:10-17:40)</span><br/></p></td>
                                         <td>-</td>
-                                        <td><p><a id="sub" href="lecturer">MAS291- <a id="materials" href='https://bom.so/c4uYVb' target='_blank'>View Materials</a><br/> at DE-C203 - <a id="meet" href='https://meet.google.com/jpn-yopf-hpq' target='_blank'>Meet URL</a><a > <br/>(<font color=red>Not yet</font>)<br/><span id="time">(16:10-17:40)</span><br/></p></td>
+                                        <td><p><a id="sub" href=''>SE1648-PRN211- at DE-C301<a > <br/>(<font color=red>Not yet</font>)<br/><span id="time">(16:10-17:40)</span><br/></p></td>
                                         <td>-</td>
                                         <td>-</td>
                                     </tr><tr>
                                     <td>Slot 7 </td>
-                                        <td>-</td>
                                         <td>-</td>
                                         <td>-</td>
                                         <td>-</td>
