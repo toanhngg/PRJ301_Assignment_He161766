@@ -15,8 +15,8 @@
         <!--<link href="styleviewFAP1.css" rel="stylesheet">-->
         <style>
             .container{
-                margin-left: 180px;
-                margin-right: 180px;
+                margin-left: 120px;
+                margin-right: 120px;
                 font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
                 font-weight: normal;
                 font-size: 13px;
@@ -99,6 +99,7 @@
                 border-bottom: 1px solid #f0f0f0;
                 background-color: #fff;
                 width: 10%;
+                align-content: center;
             }
             #materials{
                 background-color: #f0ad4e;
@@ -225,8 +226,8 @@
                                                 <td class="date"> 
                                                 <form action="timetable" method="GET">
                                                 <input type="hidden" name="lid" value="${param.lid}"/>
-                                                From: <input type="date" name="from" value="${requestScope.from}"/>
-                                                To: <input type="date" name="to" value="${requestScope.to}"/>
+                                                      From:<input type="date" name="from" value="${requestScope.from}"/>
+                                                </br> To: <input type="date" name="to" value="${requestScope.to}"/>
                                                 <input type="submit" value="View"/> 
                                             </form>
                                                 </td>
@@ -237,37 +238,40 @@
                                             </div>
                                             </tr>
                                             <c:forEach items="${requestScope.slots}" var="slot">
+                                                
                                                 <tr>
-                                                    <td>${slot.description}</td>
+                                                    <td>${slot.nameSlot}</td>
                                                     <c:forEach items="${requestScope.dates}" var="d">
                                                         <td>
                                                             <c:forEach items="${requestScope.sessions}" var="ses">
                                                                     <c:choose>
                                                                         <c:when test="${helper.compare(ses.date,d) eq 0 and (ses.timeslot.id eq slot.id)}">
-                                                                            <a href="check?id"=${ses.id}">${ses.group.name}-${ses.group.subject.name}</a>
+                                                                            <a id="sub" href="check?id"=${ses.id}">${ses.group.name}-${ses.group.subject.name}</a>
                                                                             <!--att?id--> 
-                                                                            <br/>
+                                                                            <br/> at
                                                                     ${ses.room.name}
+                                                                    </br>
+                                                                    <div id="time">${slot.description}</div>
                                                                     <c:choose>
                                                                         <%-- Khi tham số color == 'red' --%>
                                                                         <c:when test="${ses.attandated}">
-                                                                            <a href ="" style="color:green;">attended</a>
+                                                                            (<font color=Green>Attended</font>)
                                                                     </c:when>  
 
                                                                     <%-- Khi tham số color == 'blue' --%>
                                                                     <c:when test="${!ses.attandated}">
-                                                                        <a href ="" style="color:red;">absent</a>
+                                                                        (<font color=red>Absent</font>)
                                                                     </c:when>  
 
                                                                     <%-- Các trường hợp khác --%>
                                                                     <c:otherwise>
-                                                                        <a href =""style="color:red;">Not yet</a>
+                                                                        (<font color=red>Not yet</font>)
                                                                     </c:otherwise>
                                                                 </c:choose>
                                                                     </c:when> 
                                                                     <%-- Các trường hợp khác --%>
-                                                                    <c:otherwise>
-                                                                        <p></p>
+                                                                    <c:otherwise> 
+                                                                        
                                                                     </c:otherwise>
                                                                 </c:choose>
                                                                     
@@ -280,6 +284,7 @@
                                                             <%--</c:if>--%>
 
                                                         </c:forEach>
+                                                                
                                                     </td>
                                                 </c:forEach>
                                             </tr>
