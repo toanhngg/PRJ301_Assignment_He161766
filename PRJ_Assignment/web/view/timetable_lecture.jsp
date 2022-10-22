@@ -246,7 +246,7 @@
                                                             <c:forEach items="${requestScope.sessions}" var="ses">
                                                                     <c:choose>
                                                                         <c:when test="${helper.compare(ses.date,d) eq 0 and (ses.timeslot.id eq slot.id)}">
-                                                                            <a id="sub" href="check?id"=${ses.id}">${ses.group.name}-${ses.group.subject.name}</a>
+                                                                            <a id="sub" href="check?id=${ses.id}">${ses.group.name}-${ses.group.subject.name}</a>
                                                                             <!--att?id--> 
                                                                             <br/> at
                                                                     ${ses.room.name}
