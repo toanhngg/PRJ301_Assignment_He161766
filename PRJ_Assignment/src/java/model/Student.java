@@ -16,7 +16,7 @@ public class Student {
     // khai báo list cua group va attendance
     private ArrayList<Group> groups = new ArrayList<>();
     private ArrayList<Attandance> attandances = new ArrayList<>();
-
+    
     public Student() {
     }
 

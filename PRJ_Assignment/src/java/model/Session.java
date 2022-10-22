@@ -22,6 +22,7 @@ public class Session {
     private boolean attandated; 
     private ArrayList<Attandance> attandances = new ArrayList<>();
 
+    
     public Session() {
     }
 

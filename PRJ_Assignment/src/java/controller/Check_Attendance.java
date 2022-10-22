@@ -47,11 +47,11 @@ public class Check_Attendance extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int sesid = Integer.parseInt(request.getParameter("id"));
-        SessionDBContext sessionDB = new SessionDBContext();
-        Session ses = sessionDB.get(sesid);
+        SessionDBContext sesDB = new SessionDBContext();
+        Session ses = sesDB.get(sesid);
         request.setAttribute("ses", ses);
-       request.getRequestDispatcher("../view/check_attendance.jsp").forward(request, response);
-    }
+        request.getRequestDispatcher("../view/check_attendance.jsp").forward(request, response);
+       }
 
     /**
      * Handles the HTTP <code>POST</code> method.

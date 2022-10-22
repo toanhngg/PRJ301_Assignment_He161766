@@ -156,25 +156,25 @@ public class SessionDBContext extends DBContext<Session> {
     @Override
     public Session get(int id) {
         try {
-            String sql = "SELECT ses.sesid,ses.[date],ses.[index],ses.attanded,\n"
-                    + "gr.gid,gr.gname,\n"
-                    + "r.rid,r.rname,\n"
-                    + "t.tid,t.[description],\n"
-                    + "l.lid,l.lname,\n"
-                    + "sub.subid,sub.subname,\n"
-                    + "s.stdid,s.stdname,\n"
-                    + "ISNULL(a.present,0) present,ISNULL(a.[description],'') [description]\n"
-                    + "\n"
-                    + "FROM [Session] ses inner join [Group] gr on ses.sesid = gr.gid\n"
-                    + "                   inner join [Lecturer] l on ses.lid = l.lid\n"
-                    + "				   inner join Room r on r.rid = ses.rid\n"
-                    + "				   inner join TimeSlot t on t.tid = ses.tid\n"
-                    + "				   inner join [Subject] sub on sub.subid = gr.subid\n"
-                    + "				   inner join [Student_Group] sg on sg.gid = gr.gid\n"
-                    + "				   inner join [Student] s on s.stdid = sg.stdid\n"
-                    + "				   left join [Attandance] a on a.stdid = a.stdid and ses.sesid = a.sesid\n"
-                    + "				   WHERE ses.sesid = ?";
-            PreparedStatement stm = connection.prepareStatement(sql);
+              String sql = "SELECT ses.sesid,ses.[index],ses.date,ses.attanded\n"
+                    + "	,g.gid,g.gname\n"
+                    + "	,r.rid,r.rname\n"
+                    + "	,t.tid,t.[description] tdescription\n"
+                    + "	,l.lid,l.lname\n"
+                    + "	,sub.subid,sub.subname\n"
+                    + "	,s.stdid,s.stdname\n"
+                    + "	,ISNULL(a.present,0) present, ISNULL(a.[description],'') [description]\n"
+                    + "		FROM [Session] ses\n"
+                    + "		INNER JOIN Room r ON r.rid = ses.rid\n"
+                    + "		INNER JOIN TimeSlot t ON t.tid = ses.tid\n"
+                    + "		INNER JOIN Lecturer l ON l.lid = ses.lid\n"
+                    + "		INNER JOIN [Group] g ON g.gid = ses.gid\n"
+                    + "		INNER JOIN [Subject] sub ON sub.subid = g.subid\n"
+                    + "		INNER JOIN [Student_Group] sg ON sg.gid = g.gid\n"
+                    + "		INNER JOIN [Student] s ON s.stdid = sg.stdid\n"
+                    + "		LEFT JOIN Attandance a ON s.stdid = a.stdid AND ses.sesid = a.sesid\n"
+                    + "WHERE ses.sesid = ?";
+             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setInt(1, id);
             ResultSet rs = stm.executeQuery();
             Session ses = null;
@@ -186,10 +186,10 @@ public class SessionDBContext extends DBContext<Session> {
                     r.setName(rs.getString("rname"));
                     ses.setRoom(r);
 
-                    TimeSlot time = new TimeSlot();
-                    time.setId(rs.getInt("tid"));
-                    time.setDescription(rs.getString("tdescription"));
-                    ses.setTimeslot(time);
+                    TimeSlot t = new TimeSlot();
+                    t.setId(rs.getInt("tid"));
+                    t.setDescription(rs.getString("tdescription"));
+                    ses.setTimeslot(t);
 
                     Lecturer l = new Lecturer();
                     l.setId(rs.getInt("lid"));
@@ -210,26 +210,24 @@ public class SessionDBContext extends DBContext<Session> {
                     ses.setIndex(rs.getInt("index"));
                     ses.setAttandated(rs.getBoolean("attanded"));
 
-                    //ds sinh vien
-                    Student s = new Student();
-                    s.setId(rs.getInt("stdid"));
-                    s.setName(rs.getString("stdname"));
-
-                    Attandance a = new Attandance();
-                    a.setStudent(s);
-                    a.setSession(ses);
-                    a.setPresent(rs.getBoolean("present"));
-                    a.setDescription(rs.getString("description"));
-                    ses.getAttandances().add(a);
                 }
-                return ses;
+                //read student
+                Student s = new Student();
+                s.setId(rs.getInt("stdid"));
+                s.setName(rs.getString("stdname"));
+                //read attandance
+                Attandance a = new Attandance();
+                a.setStudent(s);
+                a.setSession(ses);
+                a.setPresent(rs.getBoolean("present"));
+                a.setDescription(rs.getString("description"));
+                ses.getAttandances().add(a);
             }
-        } catch (SQLException e) {
-            Logger.getLogger(SessionDBContext.class.getName()).log(Level.SEVERE, null, e);
-
+            return ses;
+        } catch (SQLException ex) {
+            Logger.getLogger(SessionDBContext.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
-
     }
 
     @Override

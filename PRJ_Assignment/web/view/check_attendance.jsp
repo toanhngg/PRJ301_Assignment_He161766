@@ -7,6 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -72,7 +73,7 @@
                 margin-top: 50px;
                 box-sizing: border-box;
                 width: 100%;
-                text-align: center;
+                text-align: left;
             }
             .content td{
                 border-bottom: 1px solid #f0f0f0;
@@ -82,7 +83,6 @@
             #headertable td{
                 height: 23px;
                 background-color: #6b90da;
-                text-align: left;
             }
             #last2{
                 font-size: 13px;
@@ -137,16 +137,17 @@
                     </div>
                 </div>
             </div>
-
+            <h2>
             Take attendance for Group: ${requestScope.ses.group.name} <br/>
             Subject: ${requestScope.ses.group.subject.name} <br/>
             Room: ${requestScope.ses.room.name} <br/>
             Date: ${requestScope.ses.date} - ${requestScope.ses.timeslot.description}<br/>
             Attended: <span style="color: red;"> ${requestScope.ses.attandated?"Yes":"No"} </span>
+            </h2>
             <form action="check" method="POST">
                 <input type="hidden" name="sesid" value="${param.id}"/>
                 <table class="content">
-                    <tr>
+                    <tr id="headertable">
                         <td>No.</td>
                         <td>StudentID</td>
                         <td>Full Name</td>
