@@ -217,15 +217,15 @@
                                             </div>
                                         </div>
                                         <div class="option">
-                                            Lecturer: <input type="text" readonly="readonly" value="${requestScope.lecturer.name}"/>
+                                            Lecturer: <input type="text" readonly="readonly" value="${sessionScope.account.username}"/>
                                             
                                         </div>
 
                                         <table class="timetable">
                                             <tr>
                                                 <td class="date"> 
-                                                <form action="timetable" method="GET">
-                                                <input type="hidden" name="lid" value="${param.lid}"/>
+                                                <form action="lecture/timetable" method="GET">
+                                                <input type="hidden" name="username" value="${param.username}"/>
                                                       From:<input type="date" name="from" value="${requestScope.from}"/>
                                                 </br> To: <input type="date" name="to" value="${requestScope.to}"/>
                                                 <input type="submit" value="View"/> 

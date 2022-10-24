@@ -26,27 +26,29 @@ import model.TimeSlot;
  */
 public class SessionDBContext extends DBContext<Session> {
 
-    public ArrayList<Session> filter(int lid, Date from, Date to) {
+    public ArrayList<Session> filter(String username, Date from, Date to) {
         ArrayList<Session> sessions = new ArrayList<>();
         try {
-            String sql = "SELECT ses.sesid,ses.[date],ses.[index],ses.attanded\n"
-                    + "                    ,l.lid,l.lname\n"
-                    + "                    ,g.gid,g.gname\n"
-                    + "                    ,sub.subid,sub.subname\n"
-                    + "                    ,r.rid,r.rname\n"
-                    + "                    ,t.tid,t.[description]\n"
+            String sql = "SELECT  \n"
+                    + "                    ses.sesid,ses.[date],ses.[index],ses.attanded,\n"
+                    + "                    l.lid,l.lname\n"
+                    + "                    	,g.gid,g.gname\n"
+                    + "                    	,sub.subid,sub.subname\n"
+                    + "                    	,r.rid,r.rname\n"
+                    + "                    	,t.tid,t.[description]\n"
                     + "                    FROM [Session] ses \n"
                     + "                    		INNER JOIN Lecturer l ON l.lid = ses.lid\n"
+                    + "                    		INNER JOIN Account_Lecturer al ON al.lid = l.lid\n"
                     + "                    		INNER JOIN [Group] g ON g.gid = ses.gid\n"
                     + "                    		INNER JOIN [Subject] sub ON sub.subid = g.subid\n"
-                    + "                    		INNER JOIN Room r ON r.rid = ses.rid\n"
+                    + "          		        INNER JOIN Room r ON r.rid = ses.rid\n"
                     + "                    		INNER JOIN TimeSlot t ON t.tid = ses.tid\n"
                     + "                    WHERE\n"
-                    + "                    l.lid = ?\n"
+                    + "                    al.username = ?\n"
                     + "                    AND ses.[date] >= ?\n"
-                    + "                     AND ses.[date] <= ?";
+                    + "                    AND ses.[date] <= ?";
             PreparedStatement stm = connection.prepareStatement(sql);
-            stm.setInt(1, lid);
+            stm.setString(1, username);
             stm.setDate(2, from);
             stm.setDate(3, to);
             ResultSet rs = stm.executeQuery();
@@ -87,7 +89,6 @@ public class SessionDBContext extends DBContext<Session> {
             }
         } catch (SQLException ex) {
             Logger.getLogger(SessionDBContext.class.getName()).log(Level.SEVERE, null, ex);
-
         }
         return sessions;
     }
@@ -118,6 +119,7 @@ public class SessionDBContext extends DBContext<Session> {
                         + "           ,[present]\n"
                         + "           ,[description]\n"
                         + "           ,[record_time])\n"
+                        
                         + "     VALUES\n"
                         + "           (?\n"
                         + "           ,?\n"

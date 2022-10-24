@@ -8,6 +8,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Lecturer;
 
 /**
@@ -31,6 +33,26 @@ public class LecturerDBContext extends DBContext<Lecturer> {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    public Lecturer get(String username) {
+        try {
+            String sql = "SELECT l.lid,lname FROM Lecturer l\n"
+                    + "inner join Account_Lecturer al on l.lid = al.lid\n"
+                    + "WHERE [username] = ?";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1, username);
+            ResultSet rs = stm.executeQuery();
+            if (rs.next()) {
+                Lecturer l = new Lecturer();
+                l.setId(rs.getInt("lid"));
+                l.setName(rs.getString("lname"));
+                return l;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(LecturerDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
     @Override
     public Lecturer get(int id) {
         try {
@@ -39,7 +61,7 @@ public class LecturerDBContext extends DBContext<Lecturer> {
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setInt(1, id);
             ResultSet rs = stm.executeQuery();
-            if(rs.next()){
+            if (rs.next()) {
                 Lecturer l = new Lecturer();
                 l.setId(rs.getInt("lid"));
                 l.setName(rs.getString("lname"));
