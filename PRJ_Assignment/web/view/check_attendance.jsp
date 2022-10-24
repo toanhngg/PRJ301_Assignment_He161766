@@ -178,9 +178,7 @@
                     </c:forEach>
 
                 </table>
-                <input type="submit" value="Save" name="save"/>
-                <button style="button" onclick="document.write('Hello')">Click here</button>
-                <a id="" href="report?id=${ses.id}">Check_Report_Attendance</a>
+                <input type="submit" value="Save"/>
       </form>
 
 

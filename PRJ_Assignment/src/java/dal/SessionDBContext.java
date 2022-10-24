@@ -97,6 +97,59 @@ public class SessionDBContext extends DBContext<Session> {
     public void insert(Session model) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+    public void updateAttandance(Session model) {
+        try {
+            connection.setAutoCommit(false);
+            String sql_update_attanded = "UPDATE [Session]\n"
+                    + "   SET [attanded] = 1\n"
+                    + " WHERE sesid = ?";
+            PreparedStatement stm_update_attanded = connection.prepareStatement(sql_update_attanded);
+            stm_update_attanded.setInt(1, model.getId());
+            stm_update_attanded.executeUpdate();
+
+            //remove old attandances 
+            String sql_remove_attandances = "DELETE Attandance\n"
+                    + " WHERE sesid = ?";
+            PreparedStatement stm_remove_attandances = connection.prepareStatement(sql_remove_attandances);
+            stm_remove_attandances.setInt(1, model.getId());
+            stm_remove_attandances.executeUpdate();
+
+            //add new attandances
+            for (Attandance att : model.getAttandances()) {
+                String sql_insert_att = "INSERT INTO [Attandance]\n"
+                        + "           ([sesid]\n"
+                        + "           ,[stdid]\n"
+                        + "           ,[present]\n"
+                        + "           ,[description],record_time)\n"
+                        + "     VALUES\n"
+                        + "           (?\n"
+                        + "           ,?\n"
+                        + "           ,?\n"
+                        + "           ,?,GETDATE())";
+                PreparedStatement stm_insert_att = connection.prepareStatement(sql_insert_att);
+                stm_insert_att.setInt(1, model.getId());
+                stm_insert_att.setInt(2, att.getStudent().getId());
+                stm_insert_att.setBoolean(3, att.isPresent());
+                stm_insert_att.setString(4, att.getDescription());
+                stm_insert_att.executeUpdate();
+            }
+
+            connection.commit();
+        } catch (SQLException ex) {
+            try {
+                connection.rollback();
+            } catch (SQLException ex1) {
+                Logger.getLogger(SessionDBContext.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+            Logger.getLogger(SessionDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                connection.setAutoCommit(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(SessionDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
 
     @Override
     public void update(Session model) {
@@ -119,7 +172,6 @@ public class SessionDBContext extends DBContext<Session> {
                         + "           ,[present]\n"
                         + "           ,[description]\n"
                         + "           ,[record_time])\n"
-                        
                         + "     VALUES\n"
                         + "           (?\n"
                         + "           ,?\n"

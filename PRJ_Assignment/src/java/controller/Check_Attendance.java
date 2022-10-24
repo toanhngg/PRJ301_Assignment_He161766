@@ -71,16 +71,19 @@ public class Check_Attendance extends HttpServlet {
             Attandance a =new Attandance();
             Student s = new Student();
             a.setStudent(s);
+            a.setSession(ses);
             a.setDescription(request.getParameter("description"+stdid));
             a.setPresent(request.getParameter("present"+stdid).equals("present"));
             s.setId(Integer.parseInt(stdid));
             ses.getAttandances().add(a);
         }
         SessionDBContext db = new SessionDBContext();
-        db.update(ses);
+//        db.update(ses);
+        db.updateAttandance(ses);
         response.sendRedirect("check?id="+ses.getId());
     }
-
+    
+    
     /**
      * Returns a short description of the servlet.
      *
