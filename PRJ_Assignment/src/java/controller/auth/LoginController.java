@@ -4,14 +4,14 @@
  */
 package controller.auth;
 
-import dal.assignment.AccountDBContext;
+import dal.AccountDBContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import model.assignment.Account;
+import model.Account;
 
 /**
  *

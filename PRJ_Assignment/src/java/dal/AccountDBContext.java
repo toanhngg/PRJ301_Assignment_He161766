@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package dal.assignment;
+package dal;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,13 +10,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import model.assignment.Account;
+import model.Account;
 
 /**
  *
  * @author admin
  */
 public class AccountDBContext extends dal.DBContext<Account> {
+    
+    
 
     public Account getAccount(String username, String password) {
         try {

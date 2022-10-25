@@ -9,19 +9,10 @@ package model;
  * @author admin
  */
 public class Attandance {
-     private int id;
     private Session session;
     private Student student;
     private boolean present;
     private String description;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public Session getSession() {
         return session;

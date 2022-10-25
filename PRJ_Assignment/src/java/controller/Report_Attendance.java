@@ -4,18 +4,23 @@
  */
 package controller;
 
+import dal.AttandanceDBContext;
+import dal.SessionDBContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import model.Attandance;
+import model.Session;
 
 /**
  *
  * @author admin
  */
-public class Report_Attemdance extends HttpServlet {
+public class Report_Attendance extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -28,19 +33,15 @@ public class Report_Attemdance extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Report_Attemdance</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Report_Attemdance at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        AttandanceDBContext db = new AttandanceDBContext();
+        int id = Integer.parseInt(request.getParameter("id"));
+        Session ses = new Session();
+        ArrayList<Attandance> list = db.getAttsBySessionId(id);
+        request.setAttribute("studentsatt", list);
+        SessionDBContext sesDB = new SessionDBContext();
+        ArrayList<Session> sessions = sesDB.list();
+        request.setAttribute("session", sessions);
+        request.getRequestDispatcher("../view/report_attendance.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -55,8 +56,8 @@ public class Report_Attemdance extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        processRequest(request, response);
-       request.getRequestDispatcher("../view/report_attendance.jsp").forward(request, response);
+        processRequest(request, response);
+//       request.getRequestDispatcher("../view/report_attendance.jsp").forward(request, response);
 
     }
 

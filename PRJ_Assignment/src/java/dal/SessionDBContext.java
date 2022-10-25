@@ -286,7 +286,21 @@ public class SessionDBContext extends DBContext<Session> {
 
     @Override
     public ArrayList<Session> list() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+         ArrayList<Session> session = new ArrayList<>();
+        String sql = "SELECT sesid FROM [Session]";
+        try {
+            PreparedStatement stm = connection.prepareStatement(sql);
+            ResultSet rs = stm.executeQuery();
+            while(rs.next())
+            {
+                Session s = new Session();
+                int sesid = rs.getInt("sesid");
+                s.setId(sesid);
+                session.add(s);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SessionDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return session;
     }
-
 }

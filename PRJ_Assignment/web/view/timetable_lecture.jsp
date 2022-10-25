@@ -195,7 +195,7 @@
                             <span id="homee"><a href="">Home</a>&nbsp;|&nbsp;<b>View Schedule</b></span>
                             <div class="choose">
                                 <a href="">
-                                    <span>anhnthe161766</span></a> | <a href="">logout</a> |
+                                    <span>${sessionScope.account.username}</span></a> | <a href="">logout</a> |
                                 <span>CAMPUS: FPTU-Hòa Lạc</span>
                             </div>
                         </div>
@@ -231,11 +231,9 @@
                                                 <input type="submit" value="View"/> 
                                             </form>
                                                 </td>
-                                            <div>
                                                 <c:forEach items="${requestScope.dates}" var="d">
                                                     <td class="date" >${d}<br/>${helper.getDayNameofWeek(d)}</td>
                                                     </c:forEach>
-                                            </div>
                                             </tr>
                                             <c:forEach items="${requestScope.slots}" var="slot">
                                                 
