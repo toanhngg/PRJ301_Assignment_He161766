@@ -284,6 +284,33 @@ public class SessionDBContext extends DBContext<Session> {
         return null;
     }
 
+        public ArrayList<Session> listReport(int id) {
+        ArrayList<Session> session = new ArrayList<>();
+        String sql = "SELECT ses.sesid,g.gid FROM [Session] ses\n"
+                + "left join [Group] g on ses.gid = g.gid\n"
+                + "where g.gid = ? ";
+        try {
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setInt(1, id);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                Session s = new Session();
+                int sesid = rs.getInt("sesid");
+                s.setId(sesid);
+                Group g = new Group();
+                int gid = rs.getInt("gid");
+                g.setId(gid);
+                s.setGroup(g);
+                session.add(s);
+                        return session;
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SessionDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
     @Override
     public ArrayList<Session> list() {
          ArrayList<Session> session = new ArrayList<>();

@@ -170,26 +170,57 @@
 
                     <h2>... then see student list (Export data)</h2>
 
+                    
                     <table class="content">
                         <tr id="headertable">
-                            <td>No.</td><td>ID Number</td><td>NAME</td><td>% Absent</td>
-                                <c:forEach items="${requestScope.session}" var="d">
-                                    <td>Sl${d.id}</td>
-                                </c:forEach>
+                            <td>No.</td>
+                            <td>GROUP</td>
+                            <td>ID Number</td>
+                            <td>NAME</td>
+                            <td>% Absent</td>
+                    <c:forEach items="${requestScope.group.sessions}" var="ses">
+                        <td> Slot ${ses.index}</td>
+                    </c:forEach>
+                </tr>
+                <c:forEach items="${requestScope.group.students}" var="std" varStatus="loop"> 
+                    <tr>
+                        <td>${loop.index+1}</td>
+                        <td>${requestScope.group.id}</td>
+                        <td>${std.id}</td>
+                        <td>${std.name}</td>
+                        <td></td>
+                        <c:forEach items="${requestScope.group.sessions}" var="a">  
+                                <c:forEach items="${a.attandances}" var="b">
+                                    <c:if test="${b.student.id eq std.id}">
+                                <td>
+                                    <c:choose>
+                                        <c:when test="${b.present}">
+                                            <p style="color: green"> P </p>
+                                        </c:when> 
+                                        <c:otherwise>
+                                            <p  style="color: red"> A </p>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </td>
+                                    </c:if>
+                            </c:forEach>
+                        </c:forEach>   
+                                 
+                    </c:forEach>    
+                </tr>   
+            </table>
+                                    
+                                    
                                     </td>
                         </tr><!-- comment -->    
                         <c:forEach items="${requestScope.studentsatt}" var="a" varStatus="loop">
                             <tr>
                                 <td>${loop.index+1}</td>
-                                <td>${a.student.id}
-                                    <input type="hidden" name="stdid" value="${a.student.id}"/>
-                                </td>
+                                <td>${a.student.id} </td>
 
                                 <td>${a.student.name}</td>
                                 <td></td>
-                                 <c:forEach items="${requestScope.session}" var="d">
                                    <td>${a.present}</td>
-                                </c:forEach>
 
                             </tr>   
 

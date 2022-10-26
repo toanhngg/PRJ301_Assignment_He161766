@@ -73,7 +73,8 @@ public class Timetable_Lecture extends HttpServlet {
         Lecturer lecturer = lecDB.get(username);
         request.setAttribute("lecturer", lecturer);
         
-        request.getRequestDispatcher("../view/timetable_lecture.jsp").forward(request, response);        
+        request.getRequestDispatcher("../view/timetable_lecture.jsp").forward(request, response); 
+
     
     }
 

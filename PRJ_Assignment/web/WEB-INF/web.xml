@@ -20,6 +20,14 @@
         <servlet-name>LogOutController</servlet-name>
         <servlet-class>controller.auth.LogOutController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Choose</servlet-name>
+        <servlet-class>controller.Choose</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Select</servlet-name>
+        <servlet-class>controller.Select</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Timetable_Lecture</servlet-name>
         <url-pattern>/lecture/timetable</url-pattern>
@@ -39,6 +47,14 @@
     <servlet-mapping>
         <servlet-name>LogOutController</servlet-name>
         <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Choose</servlet-name>
+        <url-pattern>/choose</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Select</servlet-name>
+        <url-pattern>/lecture/select</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

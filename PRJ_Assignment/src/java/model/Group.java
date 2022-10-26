@@ -16,7 +16,16 @@ public class Group {
     private String name;
     private Subject subject;
     private ArrayList<Student> students = new ArrayList<>();
+    private ArrayList<Session> sessions = new ArrayList<>();
     private Lecturer supervisor;
+
+    public ArrayList<Session> getSessions() {
+        return sessions;
+    }
+
+    public void setSessions(ArrayList<Session> sessions) {
+        this.sessions = sessions;
+    }
 
     public int getId() {
         return id;

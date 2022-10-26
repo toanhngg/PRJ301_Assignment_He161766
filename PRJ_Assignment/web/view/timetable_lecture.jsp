@@ -218,21 +218,21 @@
                                         </div>
                                         <div class="option">
                                             Lecturer: <input type="text" readonly="readonly" value="${sessionScope.account.username}"/>
-                                            
+                                            <form action="lecture/timetable" method="GET">
+                                                <input type="hidden" name="username" value="${param.username}"/>
+                                                      From:<input type="date" name="from" value="${requestScope.from}"/>
+                                                 To: <input type="date" name="to" value="${requestScope.to}"/>
+                                                <input type="submit" value="View"/> 
+                                            </form>
                                         </div>
 
                                         <table class="timetable">
-                                            <tr>
+                                            <tr >
                                                 <td class="date"> 
-                                                <form action="lecture/timetable" method="GET">
-                                                <input type="hidden" name="username" value="${param.username}"/>
-                                                      From:<input type="date" name="from" value="${requestScope.from}"/>
-                                                </br> To: <input type="date" name="to" value="${requestScope.to}"/>
-                                                <input type="submit" value="View"/> 
-                                            </form>
+                                                Slot
                                                 </td>
                                                 <c:forEach items="${requestScope.dates}" var="d">
-                                                    <td class="date" >${d}<br/>${helper.getDayNameofWeek(d)}</td>
+                                                  <td class="date" >${d}<br/>${helper.getDayNameofWeek(d)}</td>
                                                     </c:forEach>
                                             </tr>
                                             <c:forEach items="${requestScope.slots}" var="slot">
@@ -244,8 +244,10 @@
                                                             <c:forEach items="${requestScope.sessions}" var="ses">
                                                                     <c:choose>
                                                                         <c:when test="${helper.compare(ses.date,d) eq 0 and (ses.timeslot.id eq slot.id)}">
-                                                                            <a id="sub" href="check?id=${ses.id}">${ses.group.name}-${ses.group.subject.name}</a>
-                                                                            <!--att?id--> 
+                                         <a id="sub" href="check?id=${ses.id}">${ses.group.name}-${ses.group.subject.name}</a>
+                                        <a href="report?gid=${ses.group.id}&lid=${ses.lecturer.id}&subid=${ses.group.subject.id}">
+                                                    Report
+                                                </a>
                                                                             <br/> at
                                                                     ${ses.room.name}
                                                                     </br>

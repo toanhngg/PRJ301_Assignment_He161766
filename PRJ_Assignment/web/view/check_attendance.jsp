@@ -140,6 +140,7 @@
             <h2>
             Take attendance for Group: ${requestScope.ses.group.name} <br/>
             Subject: ${requestScope.ses.group.subject.name} <br/>
+            Lecturer: ${requestScope.ses.lecturer.name} <br/>
             Room: ${requestScope.ses.room.name} <br/>
             Date: ${requestScope.ses.date} - ${requestScope.ses.timeslot.description}<br/>
             Attended: <span style="color: red;"> ${requestScope.ses.attandated?"Yes":"No"} </span>
