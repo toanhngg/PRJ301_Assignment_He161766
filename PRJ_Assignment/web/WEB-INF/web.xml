@@ -28,6 +28,14 @@
         <servlet-name>Select</servlet-name>
         <servlet-class>controller.Select</servlet-class>
     </servlet>
+      <servlet>
+        <servlet-name>HomeController</servlet-name>
+        <servlet-class>controller.home.HomeController</servlet-class>
+    </servlet>
+      <servlet-mapping>
+        <servlet-name>HomeController</servlet-name>
+        <url-pattern>/home</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Timetable_Lecture</servlet-name>
         <url-pattern>/lecture/timetable</url-pattern>

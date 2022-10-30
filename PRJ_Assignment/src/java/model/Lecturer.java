@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class Lecturer {
     private int id;
     private String name;
-     private ArrayList<Group> groups = new ArrayList<>();
+    private ArrayList<Group> groups = new ArrayList<>();
     private ArrayList<Session> sessions = new ArrayList<>();
 
     public int getId() {

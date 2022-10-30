@@ -14,7 +14,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <link href="styleviewFAP3.css" rel="stylesheet">
-        <style>
+           <style>
             .container{
                 margin-left: 150px;
                 margin-right: 150px;
@@ -132,7 +132,7 @@
                     <span id="homee"><a href="">Home</a>&nbsp;|&nbsp;<b> Groups</b></span>
                     <div class="choose">
                         <a href="">
-                            <span>anhnthe161766</span></a> | <a href="">logout</a> |
+                            <span>${sessionScope.account.username}</span></a> | <a href="logout">logout</a> |
                         <span>CAMPUS: FPTU-Hòa Lạc</span>
                     </div>
                 </div>
@@ -179,7 +179,8 @@
                     </c:forEach>
 
                 </table>
-                <input type="submit" value="Save"/>
+                <input type="submit" value="Save" onclick="reportStudent(${s.id})"/>
+                
       </form>
 
 

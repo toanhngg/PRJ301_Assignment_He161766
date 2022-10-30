@@ -14,9 +14,11 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import model.Attandance;
 import model.Group;
 import model.Session;
+import model.Student;
 
 /**
  *
@@ -37,18 +39,38 @@ public class Report_Attendance extends HttpServlet {
             throws ServletException, IOException {
         AttandanceDBContext db = new AttandanceDBContext();
         int gid = Integer.parseInt(request.getParameter("gid"));
-//        int lid = Integer.parseInt(request.getParameter("lid"));
         int subid = Integer.parseInt(request.getParameter("subid"));
+        int sesid = Integer.parseInt(request.getParameter("sesid"));
         GroupDBContext groupDB = new GroupDBContext();
         Group group = groupDB.get( gid, subid);
+        HashMap<Integer, Double> percent =  groupDB.getPercent(gid, subid);
         
-//        int id = Integer.parseInt(request.getParameter("id"));
-//        Session ses = new Session();
-//        ArrayList<Attandance> list = db.getAttsBySessionId(id);
-//        request.setAttribute("studentsatt", list);
-//        SessionDBContext sesDB = new SessionDBContext();
-//        ArrayList<Session> sessions = sesDB.listReport(id);
-//        request.setAttribute("session", sessions);
+//        ArrayList<Session> ses = group.getSessions();
+//         ArrayList<Student> student = group.getStudents();
+//         
+//         HashMap<Integer,Double> getPercent = new HashMap<>();
+//         int totalSession = ses.size();
+////         int ses_isChecked = 0;
+//         int student_Abs = 0;
+//         double percent = 0;
+//         for(Student st : student){
+//         for (Session ses1 : ses) {
+//            ArrayList<Attandance> att= ses1.getAttandances();
+//            if(ses1.isAttandated()){
+////                ses_isChecked++;
+//                for (Attandance attandance : att) {
+//                    if(attandance.getStudent().getId() == st.getId()){
+//                        if(attandance.isPresent() == false)
+//                            student_Abs++;
+//                    }
+//                }
+//            }
+//         
+//         percent = (student_Abs/totalSession)*100;
+//         getPercent.put(st.getId(), percent);
+//        }
+//         }
+        request.setAttribute("percent",percent );
         request.setAttribute("group", group);
         request.getRequestDispatcher("../view/report_attendance.jsp").forward(request, response);
     }
@@ -81,7 +103,9 @@ public class Report_Attendance extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+//        processRequest(request, response);
+
+
     }
 
     /**

@@ -162,7 +162,7 @@
                             <span id="homee"><a href="">Home</a>&nbsp;|&nbsp;<b> Groups</b></span>
                             <div class="choose">
                                 <a href="">
-                                    <span>anhnthe161766</span></a> | <a href="">logout</a> |
+                                    <span>${sessionScope.account.username}</span></a> | <a href="logout">logout</a> |
                                 <span>CAMPUS: FPTU-Hòa Lạc</span>
                             </div>
                         </div>
@@ -188,18 +188,26 @@
                         <td>${requestScope.group.id}</td>
                         <td>${std.id}</td>
                         <td>${std.name}</td>
-                        <td></td>
-                        <c:forEach items="${requestScope.group.sessions}" var="a">  
+                        <c:forEach items="${requestScope.percent}" var="map"  >
+                            <c:if test="${map.key eq std.id}">
+                                <td>${map.value}% </td>
+                            </c:if>
+                                </c:forEach>
+                                                <c:forEach items="${requestScope.group.sessions}" var="a">  
                                 <c:forEach items="${a.attandances}" var="b">
                                     <c:if test="${b.student.id eq std.id}">
                                 <td>
                                     <c:choose>
-                                        <c:when test="${b.present}">
+                                        <c:when test="${b.present eq true}">
                                             <p style="color: green"> P </p>
                                         </c:when> 
-                                        <c:otherwise>
-                                            <p  style="color: red"> A </p>
-                                        </c:otherwise>
+                                            <c:when test="${!a.attandated}">
+                                            <p style="color: black"> - </p>
+                                        </c:when>
+                                            <c:when test="${b.present eq false}">
+                                            <p style="color: red"> A </p>
+                                        </c:when> 
+                                        
                                     </c:choose>
                                 </td>
                                     </c:if>

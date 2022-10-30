@@ -5,6 +5,7 @@
 package controller.auth;
 
 import dal.AccountDBContext;
+import dal.LecturerDBContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -12,6 +13,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import model.Account;
+import model.Lecturer;
 
 /**
  *
@@ -75,12 +77,23 @@ public class LoginController extends HttpServlet {
         String password = request.getParameter("password");
         AccountDBContext accDB = new AccountDBContext();
         Account account = accDB.getAccount(username, password);
-        if(account == null){
+        try {
+            if(account == null){
             response.getWriter().println("Login fail! Please input username and password");
         } else{
+//        Account acc = (Account) request.getSession().getAttribute("account");
+        LecturerDBContext lecDB = new LecturerDBContext();
+        Lecturer lecturer = lecDB.get(account.getUsername(), account.getPassword());
+        if(lecturer != null){
             request.getSession().setAttribute("account", account);
-            request.setAttribute("username", username);
-            request.getRequestDispatcher("/lecture/timetable").forward(request, response);
+            response.sendRedirect("/PRJ_Assignment/lecture/timetable");
+        } else{
+            response.sendRedirect("/student/timetable");
+        }
+        
+        }} catch (NullPointerException e) {
+        
+//            request.getRequestDispatcher("/lecture/timetable").forward(request, response);
             // tao 1 bang account_lecture va acoount_student 
 //            response.getWriter().println("login successful!");
 

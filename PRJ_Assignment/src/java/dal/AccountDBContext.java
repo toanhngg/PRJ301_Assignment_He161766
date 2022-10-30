@@ -22,11 +22,9 @@ public class AccountDBContext extends dal.DBContext<Account> {
 
     public Account getAccount(String username, String password) {
         try {
-            String sql = "SELECT l.lid,l.lname,a.[username],a.displayname\n"
-                    + "FROM Lecturer l\n"
-                    + "inner join Account_Lecturer al on l.lid = al.lid\n"
-                    + "inner join Account a on a.username = al.username\n"
-                    + "WHERE a.[username] = ? and [password] = ?";
+            String sql = "SELECT [username],displayname,password\n" +
+"                    from Account \n" +
+"                    WHERE username = ? and password = ?";
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setString(1, username);
             stm.setString(2, password);
@@ -34,6 +32,7 @@ public class AccountDBContext extends dal.DBContext<Account> {
             if (rs.next()) {
                 Account acc = new Account();
                 acc.setUsername(username);
+                acc.setPassword(password);
                 acc.setDisplayname(rs.getString("displayname"));
                 return acc;
             }
@@ -42,7 +41,7 @@ public class AccountDBContext extends dal.DBContext<Account> {
         }
         return null;
     }
-
+   
     @Override
     public void insert(Account model) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

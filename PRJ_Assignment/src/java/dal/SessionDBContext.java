@@ -30,23 +30,23 @@ public class SessionDBContext extends DBContext<Session> {
         ArrayList<Session> sessions = new ArrayList<>();
         try {
             String sql = "SELECT  \n"
-                    + "                    ses.sesid,ses.[date],ses.[index],ses.attanded,\n"
-                    + "                    l.lid,l.lname\n"
-                    + "                    	,g.gid,g.gname\n"
-                    + "                    	,sub.subid,sub.subname\n"
-                    + "                    	,r.rid,r.rname\n"
-                    + "                    	,t.tid,t.[description]\n"
-                    + "                    FROM [Session] ses \n"
-                    + "                    		INNER JOIN Lecturer l ON l.lid = ses.lid\n"
-                    + "                    		INNER JOIN Account_Lecturer al ON al.lid = l.lid\n"
-                    + "                    		INNER JOIN [Group] g ON g.gid = ses.gid\n"
-                    + "                    		INNER JOIN [Subject] sub ON sub.subid = g.subid\n"
-                    + "          		        INNER JOIN Room r ON r.rid = ses.rid\n"
-                    + "                    		INNER JOIN TimeSlot t ON t.tid = ses.tid\n"
-                    + "                    WHERE\n"
-                    + "                    al.username = ?\n"
-                    + "                    AND ses.[date] >= ?\n"
-                    + "                    AND ses.[date] <= ?";
+                    + "                                        ses.sesid,ses.[date],ses.[index],ses.attanded,\n"
+                    + "                                        l.lid,l.lname\n"
+                    + "                                        	,g.gid,g.gname\n"
+                    + "                                        	,sub.subid,sub.subname\n"
+                    + "                                        	,r.rid,r.rname\n"
+                    + "                                       	,t.tid,t.[description]\n"
+                    + "                                        FROM [Session] ses \n"
+                    + "                                       		INNER JOIN Lecturer l ON l.lid = ses.lid\n"
+                    + "                                       		INNER JOIN Account a ON a.username = l.username\n"
+                    + "                                        		INNER JOIN [Group] g ON g.gid = ses.gid\n"
+                    + "                                        		INNER JOIN [Subject] sub ON sub.subid = g.subid\n"
+                    + "                              		        INNER JOIN Room r ON r.rid = ses.rid\n"
+                    + "                                        		INNER JOIN TimeSlot t ON t.tid = ses.tid\n"
+                    + "                                        WHERE\n"
+                    + "                                        l.username = ?\n"
+                    + "                                        AND ses.[date] >= ?\n" +
+            "                                                  AND ses.[date] <= ?";
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setString(1, username);
             stm.setDate(2, from);
@@ -97,6 +97,7 @@ public class SessionDBContext extends DBContext<Session> {
     public void insert(Session model) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
     public void updateAttandance(Session model) {
         try {
             connection.setAutoCommit(false);
@@ -210,7 +211,7 @@ public class SessionDBContext extends DBContext<Session> {
     @Override
     public Session get(int id) {
         try {
-              String sql = "SELECT ses.sesid,ses.[index],ses.date,ses.attanded\n"
+            String sql = "SELECT ses.sesid,ses.[index],ses.date,ses.attanded\n"
                     + "	,g.gid,g.gname\n"
                     + "	,r.rid,r.rname\n"
                     + "	,t.tid,t.[description] tdescription\n"
@@ -228,7 +229,7 @@ public class SessionDBContext extends DBContext<Session> {
                     + "		INNER JOIN [Student] s ON s.stdid = sg.stdid\n"
                     + "		LEFT JOIN Attandance a ON s.stdid = a.stdid AND ses.sesid = a.sesid\n"
                     + "WHERE ses.sesid = ?";
-             PreparedStatement stm = connection.prepareStatement(sql);
+            PreparedStatement stm = connection.prepareStatement(sql);
             stm.setInt(1, id);
             ResultSet rs = stm.executeQuery();
             Session ses = null;
@@ -284,7 +285,7 @@ public class SessionDBContext extends DBContext<Session> {
         return null;
     }
 
-        public ArrayList<Session> listReport(int id) {
+    public ArrayList<Session> listReport(int id) {
         ArrayList<Session> session = new ArrayList<>();
         String sql = "SELECT ses.sesid,g.gid FROM [Session] ses\n"
                 + "left join [Group] g on ses.gid = g.gid\n"
@@ -302,7 +303,7 @@ public class SessionDBContext extends DBContext<Session> {
                 g.setId(gid);
                 s.setGroup(g);
                 session.add(s);
-                        return session;
+                return session;
 
             }
         } catch (SQLException ex) {
@@ -310,16 +311,15 @@ public class SessionDBContext extends DBContext<Session> {
         }
         return null;
     }
-    
+
     @Override
     public ArrayList<Session> list() {
-         ArrayList<Session> session = new ArrayList<>();
+        ArrayList<Session> session = new ArrayList<>();
         String sql = "SELECT sesid FROM [Session]";
         try {
             PreparedStatement stm = connection.prepareStatement(sql);
             ResultSet rs = stm.executeQuery();
-            while(rs.next())
-            {
+            while (rs.next()) {
                 Session s = new Session();
                 int sesid = rs.getInt("sesid");
                 s.setId(sesid);

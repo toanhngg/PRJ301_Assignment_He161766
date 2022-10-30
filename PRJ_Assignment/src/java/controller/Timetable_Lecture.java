@@ -4,6 +4,7 @@
  */
 package controller;
 
+import dal.AccountDBContext;
 import dal.LecturerDBContext;
 import dal.SessionDBContext;
 import dal.TimeSlotDBContext;
@@ -14,11 +15,11 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import model.Account;
 import model.Lecturer;
 import model.Session;
 import model.TimeSlot;
 import util.DateTimeHelper;
-
 
 /**
  *
@@ -37,22 +38,19 @@ public class Timetable_Lecture extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String username = request.getParameter("username");
+        Account acc = (Account) request.getSession().getAttribute("account");
         String raw_from = request.getParameter("from");
         String raw_to = request.getParameter("to");
         java.sql.Date from = null;
         java.sql.Date to = null;
-        if(raw_from ==null || raw_from.length() ==0)
-        {
+        if (raw_from == null || raw_from.length() == 0) {
             Date today = new Date();
             int todayOfWeek = DateTimeHelper.getDayofWeek(today);
             Date e_from = DateTimeHelper.addDays(today, 2 - todayOfWeek);
-            Date e_to = DateTimeHelper.addDays(today, 8-todayOfWeek);
+            Date e_to = DateTimeHelper.addDays(today, 8 - todayOfWeek);
             from = DateTimeHelper.toDateSql(e_from);
             to = DateTimeHelper.toDateSql(e_to);
-        }
-        else
-        {
+        } else {
             from = java.sql.Date.valueOf(raw_from);
             to = java.sql.Date.valueOf(raw_to);
         }
@@ -66,16 +64,14 @@ public class Timetable_Lecture extends HttpServlet {
         request.setAttribute("slots", slots);
         
         SessionDBContext sesDB = new SessionDBContext();
-        ArrayList<Session> sessions = sesDB.filter(username, from, to);
+        ArrayList<Session> sessions = sesDB.filter(acc.getUsername(), from, to);
+        
         request.setAttribute("sessions", sessions);
+//        request.setAttribute("lecturer", lecturer);
         
-        LecturerDBContext lecDB = new LecturerDBContext();
-        Lecturer lecturer = lecDB.get(username);
-        request.setAttribute("lecturer", lecturer);
-        
-        request.getRequestDispatcher("../view/timetable_lecture.jsp").forward(request, response); 
+        request.getRequestDispatcher("../view/timetable_lecture.jsp").forward(request, response);
 
-    
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -90,8 +86,8 @@ public class Timetable_Lecture extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                processRequest(request, response);
-
+        processRequest(request,response);
+        
 //       request.getRequestDispatcher("../view/timetable_lecture.jsp").forward(request, response);
     }
 
@@ -106,9 +102,9 @@ public class Timetable_Lecture extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
-    }
+                processRequest(request,response);
 
+    }
     /**
      * Returns a short description of the servlet.
      *

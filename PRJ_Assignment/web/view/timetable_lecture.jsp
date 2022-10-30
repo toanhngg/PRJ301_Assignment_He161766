@@ -13,6 +13,14 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <!--<link href="styleviewFAP1.css" rel="stylesheet">-->
+        <script>
+            function checkStudent(id)
+            {
+                var result = confirm("Check Attendance");
+                if (result)
+                    window.location.href = "check?id=" + id;
+            }
+        </script>
         <style>
             .container{
                 margin-left: 120px;
@@ -218,10 +226,10 @@
                                         </div>
                                         <div class="option">
                                             Lecturer: <input type="text" readonly="readonly" value="${sessionScope.account.username}"/>
-                                            <form action="lecture/timetable" method="GET">
-                                                <input type="hidden" name="username" value="${param.username}"/>
-                                                      From:<input type="date" name="from" value="${requestScope.from}"/>
-                                                 To: <input type="date" name="to" value="${requestScope.to}"/>
+                                            <form action="timetable" method="POST">
+                                                <input type="hidden" name="username" value="${sessionScope.account.username}"/>
+                                                From:<input type="date" name="from" value="${requestScope.from}"/>
+                                                To: <input type="date" name="to" value="${requestScope.to}"/>
                                                 <input type="submit" value="View"/> 
                                             </form>
                                         </div>
@@ -229,96 +237,99 @@
                                         <table class="timetable">
                                             <tr >
                                                 <td class="date"> 
-                                                Slot
+                                                    Slot
                                                 </td>
                                                 <c:forEach items="${requestScope.dates}" var="d">
-                                                  <td class="date" >${d}<br/>${helper.getDayNameofWeek(d)}</td>
+                                                    <td class="date" >${d}<br/>${helper.getDayNameofWeek(d)}</td>
                                                     </c:forEach>
                                             </tr>
                                             <c:forEach items="${requestScope.slots}" var="slot">
-                                                
+
                                                 <tr>
                                                     <td>${slot.nameSlot}</td>
                                                     <c:forEach items="${requestScope.dates}" var="d">
                                                         <td>
                                                             <c:forEach items="${requestScope.sessions}" var="ses">
-                                                                    <c:choose>
-                                                                        <c:when test="${helper.compare(ses.date,d) eq 0 and (ses.timeslot.id eq slot.id)}">
-                                         <a id="sub" href="check?id=${ses.id}">${ses.group.name}-${ses.group.subject.name}</a>
-                                        <a href="report?gid=${ses.group.id}&lid=${ses.lecturer.id}&subid=${ses.group.subject.id}">
-                                                    Report
-                                                </a>
-                                                                            <br/> at
-                                                                    ${ses.room.name}
-                                                                    </br>
-                                                                    <div id="time">${slot.description}</div>
-                                                                    <c:choose>
-                                                                        <%-- Khi tham số color == 'red' --%>
-                                                                        <c:when test="${ses.attandated}">
-                                                                            (<font color=Green>Attended</font>)
-                                                                    </c:when>  
+                                                                <c:choose>
+                                                                    <c:when test="${helper.compare(ses.date,d) eq 0 and (ses.timeslot.id eq slot.id)}">
 
-                                                                    <%-- Khi tham số color == 'blue' --%>
-                                                                    <c:when test="${!ses.attandated}">
-                                                                        (<font color=red>Absent</font>)
-                                                                    </c:when>  
+                                                                        <a href="#" onclick="checkStudent(${ses.id})"> ${ses.group.name}-${ses.group.subject.name}</a>
 
-                                                                    <%-- Các trường hợp khác --%>
-                                                                    <c:otherwise>
-                                                                        (<font color=red>Not yet</font>)
-                                                                    </c:otherwise>
-                                                                </c:choose>
+
+                                                                        <a href="report?gid=${ses.group.id}&lid=${ses.lecturer.id}&subid=${ses.group.subject.id}&sesid=${ses.id}">
+                                                                            Report
+                                                                        </a>
+                                                                        <br/> at
+                                                                        ${ses.room.name}
+                                                                        </br>
+                                                                        <div id="time">${slot.description}</div>
+                                                                        <c:choose>
+                                                                            <%-- Khi tham số color == 'red' --%>
+                                                                            <c:when test="${ses.attandated}">
+                                                                                (<font color=Green>Attended</font>)
+                                                                            </c:when>  
+
+                                                                            <%-- Khi tham số color == 'blue' --%>
+                                                                            <c:when test="${!ses.attandated}">
+                                                                                (<font color=red>Absent</font>)
+                                                                            </c:when>  
+
+                                                                            <%-- Các trường hợp khác --%>
+                                                                            <c:otherwise>
+                                                                                (<font color=red>Not yet</font>)
+                                                                            </c:otherwise>
+                                                                        </c:choose>
                                                                     </c:when> 
                                                                     <%-- Các trường hợp khác --%>
                                                                     <c:otherwise> 
-                                                                        
+
                                                                     </c:otherwise>
                                                                 </c:choose>
-                                                                    
+
                                                                 <%--<c:if test="${ses.attandated}">--%>
                                                                 <!--<img src="../img/male-icon.png" alt=""/>-->
                                                                 <%--</c:if>--%>
                                                                 <%--<c:if test="${!ses.attandated}">--%>
                                                                 <!--<img src="../img/female-icon.png" alt=""/>-->
                                                                 <%--</c:if>--%>
-                                                            <%--</c:if>--%>
+                                                                <%--</c:if>--%>
 
-                                                        </c:forEach>
-                                                                
-                                                    </td>
-                                                </c:forEach>
-                                            </tr>
-                                        </c:forEach>
-                                    </table>
-                                    <div class="last">
-                                        <div>
-                                            <p>
-                                                <b>More note / Chú thích thêm</b>:
-                                            </p>
-                                            <div><ul><li>(<font color='green'>attended</font>): AnhNTHE161766 had attended this activity / Nguyễn Tố Anh đã tham gia hoạt động này</li><li>(<font color='red'>absent</font>): AnhNTHE161766 had NOT attended this activity / Nguyễn Tố Anh đã vắng mặt buổi này</li>   <li>(-): no data was given / chưa có dữ liệu</li> </ul></div>
-                                            <p>
-                                            </p>
-                                        </div>
-                                        </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <br />
-                                                <table>
-                                                    <tr>
-                                                        <td>
-                                                            <div id="last2">
-                                                                <div>
-                                                                    <br />
-                                                                    <b>Mọi góp ý, thắc mắc xin liên hệ: </b><span>Phòng dịch vụ sinh viên</span>: Email: <a href="mailto:dichvusinhvien@fe.edu.vn">dichvusinhvien@fe.edu.vn</a>.
-                                                                    Điện thoại: <span> </span>
-                                                                    <br />
-                                                                </div>                         
+                                                            </c:forEach>
+
                                                         </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td id="last3">
-                                                            <p style="text-align: center">
+                                                    </c:forEach>
+                                                </tr>
+                                            </c:forEach>
+                                        </table>
+                                        <div class="last">
+                                            <div>
+                                                <p>
+                                                    <b>More note / Chú thích thêm</b>:
+                                                </p>
+                                                <div><ul><li>(<font color='green'>attended</font>): AnhNTHE161766 had attended this activity / Nguyễn Tố Anh đã tham gia hoạt động này</li><li>(<font color='red'>absent</font>): AnhNTHE161766 had NOT attended this activity / Nguyễn Tố Anh đã vắng mặt buổi này</li>   <li>(-): no data was given / chưa có dữ liệu</li> </ul></div>
+                                                <p>
+                                                </p>
+                                            </div>
+                                            </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <br />
+                                                    <table>
+                                                        <tr>
+                                                            <td>
+                                                                <div id="last2">
+                                                                    <div>
+                                                                        <br />
+                                                                        <b>Mọi góp ý, thắc mắc xin liên hệ: </b><span>Phòng dịch vụ sinh viên</span>: Email: <a href="mailto:dichvusinhvien@fe.edu.vn">dichvusinhvien@fe.edu.vn</a>.
+                                                                        Điện thoại: <span> </span>
+                                                                        <br />
+                                                                    </div>                         
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="last3">
+                                                                <p style="text-align: center">
                                                                     © Powered by <a href="http://fpt.edu.vn" target="_blank">FPT University</a>&nbsp;|&nbsp;
                                                                     <a href="http://cms.fpt.edu.vn/" target="_blank">CMS</a>&nbsp;|&nbsp; <a href="http://library.fpt.edu.vn" target="_blank">library</a>&nbsp;|&nbsp; <a href="http://library.books24x7.com" target="_blank">books24x7</a>
                                                                 </p>     </td>  

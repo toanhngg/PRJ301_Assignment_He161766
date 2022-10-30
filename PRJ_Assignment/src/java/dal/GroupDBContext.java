@@ -8,10 +8,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.Attandance;
 import model.Group;
 import model.Session;
+import model.Student;
 
 /**
  *
@@ -44,17 +47,54 @@ public class GroupDBContext extends DBContext<Group> {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    public HashMap<Integer, Double> getPercent(int gid, int subid) {
+        HashMap<Integer, Double> getPercent = new HashMap<>();
+        try {
+            String sql = "Select s.stdid ,sum(case present when 0 then 1 else 0 end) as [NumberOfAbsent], count(ses.[index]) as [NumberOfSession]\n"
+                    + "                    from Session ses left join [Group] g on ses.gid = g.gid\n"
+                    + "                    				 left join Subject sub on sub.subid = g.subid\n"
+                    + "                    				 left join Student_Group sg on sg.gid = g.gid\n"
+                    + "                    				 left join [Student] s ON s.stdid = sg.stdid\n"
+                    + "                                     left join Attandance a ON s.stdid = a.stdid AND ses.sesid = a.sesid\n"
+                    + "                    				 where g.gid = ?  and sub.subid= ?  \n"
+                    + "                    			 group by s.stdid";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setInt(1, gid);
+            stm.setInt(2, subid);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                double percent = (double) rs.getInt("NumberOfAbsent") / rs.getInt("NumberOfSession") * 100;
+                getPercent.put(rs.getInt("stdid"), percent);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(GroupDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return getPercent;
+    }
+
+//    public static void main(String[] args) {
+//        GroupDBContext g = new GroupDBContext();
+//        HashMap<Integer, Double> m = g.getPercent(1, 1);
+//        System.out.println(g.getPercent(1, 1));
+//        for (HashMap.Entry<Integer, Double> en : m.entrySet()) {
+//            Integer key = en.getKey();
+//            Double val = en.getValue();
+//            System.out.println(key + "  " + val);
+//        }
+//
+//    }
+
     public Group get(int gid, int subid) {
         ArrayList<Session> sessions = new ArrayList<>();
         try {
-            String sql = "SELECT DISTINCT ses.sesid\n" +
-"                    FROM [Session] ses \n" +
-"                    LEFT JOIN [Group] g ON g.gid = ses.gid\n" +
-"                    LEFT JOIN [Student_Group] sg ON sg.gid = g.gid\n" +
-"                    LEFT JOIN Student s ON sg.stdid = s.stdid\n" +
-"                    LEFT JOIN Lecturer l ON l.lid = ses.lid\n" +
-"                    LEFT JOIN [Subject] sb ON sb.subid = g.subid\n" +
-"                    WHERE g.gid = ? and sb.subid = ?";
+            String sql = "SELECT distinct ses.sesid FROM [Group] g\n"
+                    + "LEFT JOIN [Session] ses ON ses.gid = g.gid\n"
+                    + "LEFT JOIN Student_Group sg ON sg.gid = g.gid\n"
+                    + "LEFT JOIN Student s ON s.stdid = sg.stdid\n"
+                    + "LEFT JOIN Lecturer l ON l.lid = ses.lid\n"
+                    + "LEFT JOIN [Attandance] a on a.sesid = ses.sesid\n"
+                    + "LEFT JOIN [Subject] sb ON sb.subid = g.subid\n"
+                    + "WHERE g.gid = ? and sb.subid = ?";
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setInt(1, gid);
             stm.setInt(2, subid);
@@ -62,13 +102,14 @@ public class GroupDBContext extends DBContext<Group> {
             Group group = new Group();
             group.setId(gid);
             while (rs.next()) {
-                SessionDBContext sesDB = new SessionDBContext();
-                Session session = sesDB.get(rs.getInt("sesid"));
+                SessionDBContext ses = new SessionDBContext();
+                Session session = ses.get(rs.getInt("sesid"));
                 sessions.add(session);
             }
+
             group.setSessions(sessions);
-            StudentDBContext stdDB = new StudentDBContext();
-            group.setStudents(stdDB.list(gid));
+            StudentDBContext std = new StudentDBContext();
+            group.setStudents(std.list(gid));
             return group;
         } catch (SQLException ex) {
             Logger.getLogger(SessionDBContext.class.getName()).log(Level.SEVERE, null, ex);
