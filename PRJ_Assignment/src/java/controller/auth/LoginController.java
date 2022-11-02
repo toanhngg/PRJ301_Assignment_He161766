@@ -6,6 +6,7 @@ package controller.auth;
 
 import dal.AccountDBContext;
 import dal.LecturerDBContext;
+import dal.StudentDBContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -14,6 +15,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import model.Account;
 import model.Lecturer;
+import model.Student;
 
 /**
  *
@@ -84,11 +86,14 @@ public class LoginController extends HttpServlet {
 //        Account acc = (Account) request.getSession().getAttribute("account");
         LecturerDBContext lecDB = new LecturerDBContext();
         Lecturer lecturer = lecDB.get(account.getUsername(), account.getPassword());
+        StudentDBContext stDB = new StudentDBContext();
+        Student student = stDB.get(account.getUsername(), account.getPassword());
         if(lecturer != null){
             request.getSession().setAttribute("account", account);
             response.sendRedirect("/PRJ_Assignment/lecture/timetable");
-        } else{
-            response.sendRedirect("/student/timetable");
+        } else if(student != null){ 
+            request.getSession().setAttribute("account", account);
+            response.sendRedirect("/PRJ_Assignment/student/timetable");
         }
         
         }} catch (NullPointerException e) {

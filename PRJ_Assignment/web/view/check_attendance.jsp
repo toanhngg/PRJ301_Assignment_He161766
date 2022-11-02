@@ -82,7 +82,7 @@
             }
             #headertable td{
                 height: 23px;
-                background-color: #6b90da;
+                background-color: #f7c8d0;
             }
             #last2{
                 font-size: 13px;
@@ -129,10 +129,10 @@
             </div>
             <div>
                 <div  class="header2">
-                    <span id="homee"><a href="">Home</a>&nbsp;|&nbsp;<b> Groups</b></span>
+                    <span id="homee"><a href="timetable">TimeTable</a>&nbsp;|&nbsp;<b> Groups</b></span>
                     <div class="choose">
                         <a href="">
-                            <span>${sessionScope.account.username}</span></a> | <a href="logout">logout</a> |
+                            <span>${sessionScope.account.username}</span></a> | <a href="../logout">logout</a> |
                         <span>CAMPUS: FPTU-Hòa Lạc</span>
                     </div>
                 </div>
@@ -180,6 +180,7 @@
 
                 </table>
                 <input type="submit" value="Save" onclick="reportStudent(${s.id})"/>
+               
                 
       </form>
 

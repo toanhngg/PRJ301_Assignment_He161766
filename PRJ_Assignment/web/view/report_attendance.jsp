@@ -86,7 +86,7 @@
             }
             #headertable td{
                 height: 23px;
-                background-color: #6b90da;
+                background-color: #f7c8d0;
             }
             #sub{
                 text-decoration: none;
@@ -162,7 +162,7 @@
                             <span id="homee"><a href="">Home</a>&nbsp;|&nbsp;<b> Groups</b></span>
                             <div class="choose">
                                 <a href="">
-                                    <span>${sessionScope.account.username}</span></a> | <a href="logout">logout</a> |
+                                    <span>${sessionScope.account.username}</span></a> | <a href="../logout">logout</a> |
                                 <span>CAMPUS: FPTU-Hòa Lạc</span>
                             </div>
                         </div>

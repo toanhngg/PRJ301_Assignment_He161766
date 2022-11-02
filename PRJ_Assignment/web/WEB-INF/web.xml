@@ -5,6 +5,10 @@
         <servlet-class>controller.Timetable_Lecture</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>Timetable_Student</servlet-name>
+        <servlet-class>controller.Timetable_Student</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>Check_Attendance</servlet-name>
         <servlet-class>controller.Check_Attendance</servlet-class>
     </servlet>
@@ -28,17 +32,21 @@
         <servlet-name>Select</servlet-name>
         <servlet-class>controller.Select</servlet-class>
     </servlet>
-      <servlet>
+    <servlet>
         <servlet-name>HomeController</servlet-name>
         <servlet-class>controller.home.HomeController</servlet-class>
     </servlet>
-      <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>HomeController</servlet-name>
         <url-pattern>/home</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Timetable_Lecture</servlet-name>
         <url-pattern>/lecture/timetable</url-pattern>
+    </servlet-mapping>
+      <servlet-mapping>
+        <servlet-name>Timetable_Student</servlet-name>
+        <url-pattern>/student/timetable</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Check_Attendance</servlet-name>
@@ -64,6 +72,7 @@
         <servlet-name>Select</servlet-name>
         <url-pattern>/lecture/select</url-pattern>
     </servlet-mapping>
+    
     <session-config>
         <session-timeout>
             30

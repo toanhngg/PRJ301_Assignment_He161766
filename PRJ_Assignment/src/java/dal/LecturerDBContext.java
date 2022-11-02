@@ -53,30 +53,8 @@ public class LecturerDBContext extends DBContext<Lecturer> {
         }
         return null;
     }
+  
 
-    public int getID(String username) {
-        try {
-            String sql = "SELECT l.lid FROM Lecturer l\n"
-                    + "inner join Account_Lecturer al on l.lid = al.lid\n"
-                    + "WHERE [username] = ?";
-            PreparedStatement stm = connection.prepareStatement(sql);
-            stm.setString(1, username);
-            stm.execute();
-
-//            ResultSet rs = stm.executeQuery();
-            ResultSet rs = stm.getGeneratedKeys();
-
-            if (rs.next()) {
-//                Lecturer l = new Lecturer();
-//                l.setId(rs.getInt("lid"));
-                int generatedKey = rs.getInt(1);
-                return generatedKey;
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(LecturerDBContext.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return 0;
-    }
 
     @Override
     public Lecturer get(int id) {

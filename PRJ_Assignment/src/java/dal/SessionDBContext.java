@@ -45,8 +45,8 @@ public class SessionDBContext extends DBContext<Session> {
                     + "                                        		INNER JOIN TimeSlot t ON t.tid = ses.tid\n"
                     + "                                        WHERE\n"
                     + "                                        l.username = ?\n"
-                    + "                                        AND ses.[date] >= ?\n" +
-            "                                                  AND ses.[date] <= ?";
+                    + "                                        AND ses.[date] >= ?\n"
+                    + "                                                  AND ses.[date] <= ?";
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setString(1, username);
             stm.setDate(2, from);
@@ -69,6 +69,78 @@ public class SessionDBContext extends DBContext<Session> {
                 l.setName(rs.getString("lname"));
                 session.setLecturer(l);
 
+                g.setId(rs.getInt("gid"));
+                g.setName(rs.getString("gname"));
+                session.setGroup(g);
+
+                sub.setId(rs.getInt("subid"));
+                sub.setName(rs.getString("subname"));
+                g.setSubject(sub);
+
+                r.setId(rs.getInt("rid"));
+                r.setName(rs.getString("rname"));
+                session.setRoom(r);
+
+                t.setId(rs.getInt("tid"));
+                t.setDescription(rs.getString("description"));
+                session.setTimeslot(t);
+
+                sessions.add(session);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SessionDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return sessions;
+    }
+
+    public ArrayList<Session> filterStudent(String username, Date from, Date to) {
+        ArrayList<Session> sessions = new ArrayList<>();
+        try {
+            String sql = "select ss.sesid,ss.[date],ss.[index],ss.attanded,\n"
+                    + "          s.stdname,l.lname,t.nameSlot\n"
+                    + "    	,g.gid,g.gname\n"
+                    + "    	,sub.subid,sub.subname\n"
+                    + "         ,r.rid,r.rname\n"
+                    + "  	,t.tid,t.[description]\n"
+                    + "from [Session] ss\n"
+                    + "left join [Group] g on g.gid = ss.gid\n"
+                    + "left join [Student_Group] sg on sg.gid = g.gid\n"
+                    + "left join Student s on s.stdid = sg.stdid\n"
+                    + "left join TimeSlot t on t.tid = ss.tid\n"
+                    + "INNER JOIN Account a ON a.username = s.username\n"
+                    + "INNER JOIN Room r ON r.rid = ss.rid\n"
+                    + "left join [Subject] sub on sub.subid = g.subid\n"
+                    + "INNER JOIN Lecturer l ON l.lid = ss.lid\n"
+                    + "where s.username = ?\n"
+                    + "AND ss.[date] >= ? \n"
+                    + "AND ss.[date] <= ?";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1, username);
+            stm.setDate(2, from);
+            stm.setDate(3, to);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                Session session = new Session();
+                Lecturer l = new Lecturer();
+                Room r = new Room();
+                Group g = new Group();
+                TimeSlot t = new TimeSlot();
+                Subject sub = new Subject();
+                Student st = new Student();
+
+                session.setId(rs.getInt("sesid"));
+                session.setDate(rs.getDate("date"));
+                session.setIndex(rs.getInt("index"));
+                session.setAttandated(rs.getBoolean("attanded"));
+
+                l.setId(rs.getInt("lid"));
+                l.setName(rs.getString("lname"));
+                session.setLecturer(l);
+                
+                st.setId(rs.getInt("stdid"));
+                st.setName(rs.getString("stdname"));
+                
+                
                 g.setId(rs.getInt("gid"));
                 g.setName(rs.getString("gname"));
                 session.setGroup(g);

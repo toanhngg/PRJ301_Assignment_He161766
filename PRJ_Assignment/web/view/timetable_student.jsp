@@ -203,7 +203,7 @@
                             <span id="homee"><a href="">Home</a>&nbsp;|&nbsp;<b>View Schedule</b></span>
                             <div class="choose">
                                 <a href="">
-                                    <span>${sessionScope.account.username}</span></a> | <a href="../logout">logout</a> |
+                                    <span>${sessionScope.account.username}</span></a> | <a href="">logout</a> |
                                 <span>CAMPUS: FPTU-Hòa Lạc</span>
                             </div>
                         </div>
