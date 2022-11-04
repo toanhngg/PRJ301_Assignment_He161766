@@ -46,7 +46,7 @@
     </servlet-mapping>
       <servlet-mapping>
         <servlet-name>Timetable_Student</servlet-name>
-        <url-pattern>/student/timetable</url-pattern>
+        <url-pattern>/student/timetable1</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Check_Attendance</servlet-name>

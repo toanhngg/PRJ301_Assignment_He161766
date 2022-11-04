@@ -96,24 +96,18 @@ public class SessionDBContext extends DBContext<Session> {
     public ArrayList<Session> filterStudent(String username, Date from, Date to) {
         ArrayList<Session> sessions = new ArrayList<>();
         try {
-            String sql = "select ss.sesid,ss.[date],ss.[index],ss.attanded,\n"
-                    + "          s.stdname,l.lname,t.nameSlot\n"
-                    + "    	,g.gid,g.gname\n"
-                    + "    	,sub.subid,sub.subname\n"
-                    + "         ,r.rid,r.rname\n"
-                    + "  	,t.tid,t.[description]\n"
-                    + "from [Session] ss\n"
-                    + "left join [Group] g on g.gid = ss.gid\n"
-                    + "left join [Student_Group] sg on sg.gid = g.gid\n"
-                    + "left join Student s on s.stdid = sg.stdid\n"
-                    + "left join TimeSlot t on t.tid = ss.tid\n"
-                    + "INNER JOIN Account a ON a.username = s.username\n"
-                    + "INNER JOIN Room r ON r.rid = ss.rid\n"
-                    + "left join [Subject] sub on sub.subid = g.subid\n"
-                    + "INNER JOIN Lecturer l ON l.lid = ss.lid\n"
-                    + "where s.username = ?\n"
-                    + "AND ss.[date] >= ? \n"
-                    + "AND ss.[date] <= ?";
+            String sql = "select *\n"
+                    + "                       from [Session] ses\n"
+                    + "					     LEFT JOIN [Group] g on g.gid = ses.gid\n"
+                    + "                		 LEFT JOIN Student_Group sg on  sg.gid = g.gid \n"
+                    + "						 LEFT JOIN Student  s on sg.stdid = s.stdid\n"
+                    + "						 LEFT JOIN [Subject] sub ON sub.subid = g.subid\n"
+                    + "						 LEFT JOIN Account ac ON ac.username = s.username\n"
+                    + "						 LEFT JOIN Room r ON r.rid = ses.rid\n"
+                    + "						 LEFT JOIN TimeSlot t on t.tid = ses.tid\n"
+                    + "                    where s.username = ? \n"
+                    + "                    AND ses.[date] >= ?\n"
+                    + "                    AND ses.[date] <= ?";
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setString(1, username);
             stm.setDate(2, from);
@@ -121,26 +115,21 @@ public class SessionDBContext extends DBContext<Session> {
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {
                 Session session = new Session();
-                Lecturer l = new Lecturer();
                 Room r = new Room();
                 Group g = new Group();
                 TimeSlot t = new TimeSlot();
                 Subject sub = new Subject();
                 Student st = new Student();
+//                Attandance a = new Attandance();
 
                 session.setId(rs.getInt("sesid"));
                 session.setDate(rs.getDate("date"));
                 session.setIndex(rs.getInt("index"));
                 session.setAttandated(rs.getBoolean("attanded"));
 
-                l.setId(rs.getInt("lid"));
-                l.setName(rs.getString("lname"));
-                session.setLecturer(l);
-                
                 st.setId(rs.getInt("stdid"));
                 st.setName(rs.getString("stdname"));
-                
-                
+
                 g.setId(rs.getInt("gid"));
                 g.setName(rs.getString("gname"));
                 session.setGroup(g);

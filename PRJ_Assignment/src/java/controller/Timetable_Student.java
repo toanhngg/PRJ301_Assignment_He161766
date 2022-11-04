@@ -7,6 +7,7 @@ package controller;
 import dal.AccountDBContext;
 import dal.LecturerDBContext;
 import dal.SessionDBContext;
+import dal.StudentDBContext;
 import dal.TimeSlotDBContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -18,6 +19,7 @@ import java.util.Date;
 import model.Account;
 import model.Lecturer;
 import model.Session;
+import model.Student;
 import model.TimeSlot;
 import util.DateTimeHelper;
 
@@ -54,25 +56,27 @@ public class Timetable_Student extends HttpServlet {
             from = java.sql.Date.valueOf(raw_from);
             to = java.sql.Date.valueOf(raw_to);
         }
-        
+
         request.setAttribute("from", from);
         request.setAttribute("to", to);
         request.setAttribute("dates", DateTimeHelper.getDateList(from, to));
-        
+
         TimeSlotDBContext slotDB = new TimeSlotDBContext();
         ArrayList<TimeSlot> slots = slotDB.list();
         request.setAttribute("slots", slots);
-        
+
         SessionDBContext sesDB = new SessionDBContext();
-        ArrayList<Session> sessions;
-        sessions = sesDB.filterStudent(acc.getUsername(), from, to);
-        
-        request.setAttribute("sessions", sessions);
+        ArrayList<Session> ses;
+        ses = sesDB.filterStudent(acc.getUsername(), from, to);
+
+        request.setAttribute("sessionst", ses);
 //        request.setAttribute("lecturer", lecturer);
-        
+
+//        StudentDBContext st = new StudentDBContext();
+//        Student student = st.get(acc.getUsername());
+//        request.setAttribute("student", student);
         request.getRequestDispatcher("../view/timetable_student.jsp").forward(request, response);
 
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -87,8 +91,8 @@ public class Timetable_Student extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request,response);
-        
+        processRequest(request, response);
+
 //       request.getRequestDispatcher("../view/timetable_lecture.jsp").forward(request, response);
     }
 
@@ -103,9 +107,10 @@ public class Timetable_Student extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                processRequest(request,response);
+        processRequest(request, response);
 
     }
+
     /**
      * Returns a short description of the servlet.
      *

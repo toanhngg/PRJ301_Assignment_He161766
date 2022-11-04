@@ -93,7 +93,7 @@ public class LoginController extends HttpServlet {
             response.sendRedirect("/PRJ_Assignment/lecture/timetable");
         } else if(student != null){ 
             request.getSession().setAttribute("account", account);
-            response.sendRedirect("/PRJ_Assignment/student/timetable");
+            response.sendRedirect("/PRJ_Assignment/student/timetable1");
         }
         
         }} catch (NullPointerException e) {

@@ -139,21 +139,7 @@
     <body>
         <div class="form">
                 <img style="height: 650px; width: 60%;" src="https://tostemvietnam.com/wp-content/uploads/2021/10/FPT-University-8.jpg"/> 
-            <!--            <div>
-                            <form class="from" action="login" method="POST" >
-                                <EM id="click">LogIn</EM>
-                                <fieldset>
-                                    Username : <br>
-                                    <input type="text" name="username" value ="sonnt"> 
-                                    <br> Password : <br>
-                                    <input type="password" name="password" value ="">
-                                    <br><br>
-                                    <input type="submit" value="Login">
-                                    <input type="reset" value="Reset">
-                                </fieldset>
-                            </form>    
-                        </div>-->
-
+         
 
             <div>
                 <form class="inputs" action="login" method="POST" >

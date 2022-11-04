@@ -234,14 +234,22 @@
                                             </form>
                                         </div>
 
+
+
                                         <table class="timetable">
                                             <tr >
-                                                <td class="date"> 
-                                                    Slot
-                                                </td>
-                                                <c:forEach items="${requestScope.dates}" var="d">
-                                                    <td class="date" >${d}<br/>${helper.getDayNameofWeek(d)}</td>
+                                                <th rowspan="2" class="date">
+                                                Slot 
+                                            </th>
+                                                <c:forEach items="${requestScope.dates}" var="d"> 
+                                                    <th class="date">${helper.getDayNameofWeek(d)}</th>
                                                     </c:forEach>
+                                            </tr>    
+                                            <tr>
+                                                <c:forEach items="${requestScope.dates}" var="d">
+                                                    <th class="date">${d}</th>
+                                                    </c:forEach>
+                                            </tr>
                                             </tr>
                                             <c:forEach items="${requestScope.slots}" var="slot">
 

@@ -13,14 +13,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <!--<link href="styleviewFAP1.css" rel="stylesheet">-->
-        <script>
-            function checkStudent(id)
-            {
-                var result = confirm("Check Attendance");
-                if (result)
-                    window.location.href = "check?id=" + id;
-            }
-        </script>
         <style>
             .container{
                 margin-left: 120px;
@@ -226,7 +218,7 @@
                                         </div>
                                         <div class="option">
                                             Lecturer: <input type="text" readonly="readonly" value="${sessionScope.account.username}"/>
-                                            <form action="timetable" method="GET">
+                                            <form action="timetable1" method="GET">
                                                 <input type="hidden" name="username" value="${sessionScope.account.username}"/>
                                                 From:<input type="date" name="from" value="${requestScope.from}"/>
                                                 To: <input type="date" name="to" value="${requestScope.to}"/>
@@ -236,11 +228,16 @@
 
                                         <table class="timetable">
                                             <tr >
-                                                <td class="date"> 
-                                                    Slot
-                                                </td>
+                                                <th rowspan="2" class="date">
+                                                Slot 
+                                            </th>
+                                                <c:forEach items="${requestScope.dates}" var="d"> 
+                                                    <th class="date">${helper.getDayNameofWeek(d)}</th>
+                                                    </c:forEach>
+                                            </tr>    
+                                            <tr>
                                                 <c:forEach items="${requestScope.dates}" var="d">
-                                                    <td class="date" >${d}<br/>${helper.getDayNameofWeek(d)}</td>
+                                                    <th class="date">${d}</th>
                                                     </c:forEach>
                                             </tr>
                                             <c:forEach items="${requestScope.slots}" var="slot">
@@ -249,28 +246,22 @@
                                                     <td>${slot.nameSlot}</td>
                                                     <c:forEach items="${requestScope.dates}" var="d">
                                                         <td>
-                                                            <c:forEach items="${requestScope.sessions}" var="ses">
+                                                            <c:forEach items="${requestScope.sessionst}" var="ss">
                                                                 <c:choose>
-                                                                    <c:when test="${helper.compare(ses.date,d) eq 0 and (ses.timeslot.id eq slot.id)}">
-
-                                                                        <a href="#" onclick="checkStudent(${ses.id})"> ${ses.group.name}-${ses.group.subject.name}</a>
-
-
-                                                                        <a href="report?gid=${ses.group.id}&lid=${ses.lecturer.id}&subid=${ses.group.subject.id}&sesid=${ses.id}">
-                                                                            Report
-                                                                        </a>
+                                                                    <c:when test="${helper.compare(ss.date,d) eq 0 and (ss.timeslot.id eq slot.id)}">
+                                                                        <a>${ss.group.name}-${ss.group.subject.name}</a>
                                                                         <br/> at
-                                                                        ${ses.room.name}
+                                                                        ${ss.room.name}
                                                                         </br>
                                                                         <div id="time">${slot.description}</div>
                                                                         <c:choose>
                                                                             <%-- Khi tham số color == 'red' --%>
-                                                                            <c:when test="${ses.attandated}">
+                                                                            <c:when test="${ss.attandated}">
                                                                                 (<font color=Green>Attended</font>)
                                                                             </c:when>  
 
                                                                             <%-- Khi tham số color == 'blue' --%>
-                                                                            <c:when test="${!ses.attandated}">
+                                                                            <c:when test="${!ss.attandated}">
                                                                                 (<font color=red>Absent</font>)
                                                                             </c:when>  
 
@@ -285,14 +276,6 @@
 
                                                                     </c:otherwise>
                                                                 </c:choose>
-
-                                                                <%--<c:if test="${ses.attandated}">--%>
-                                                                <!--<img src="../img/male-icon.png" alt=""/>-->
-                                                                <%--</c:if>--%>
-                                                                <%--<c:if test="${!ses.attandated}">--%>
-                                                                <!--<img src="../img/female-icon.png" alt=""/>-->
-                                                                <%--</c:if>--%>
-                                                                <%--</c:if>--%>
 
                                                             </c:forEach>
 
