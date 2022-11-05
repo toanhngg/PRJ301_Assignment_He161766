@@ -13,8 +13,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import model.Account;
 import model.Lecturer;
+import model.Role;
 import model.Student;
 
 /**
@@ -40,7 +42,7 @@ public class LoginController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet LoginController</title>");            
+            out.println("<title>Servlet LoginController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet LoginController at " + request.getContextPath() + "</h1>");
@@ -78,32 +80,42 @@ public class LoginController extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         AccountDBContext accDB = new AccountDBContext();
-        Account account = accDB.getAccount(username, password);
+        Account account = accDB.get(username, password);
         try {
-            if(account == null){
-            response.getWriter().println("Login fail! Please input username and password");
-        } else{
-//        Account acc = (Account) request.getSession().getAttribute("account");
-        LecturerDBContext lecDB = new LecturerDBContext();
-        Lecturer lecturer = lecDB.get(account.getUsername(), account.getPassword());
-        StudentDBContext stDB = new StudentDBContext();
-        Student student = stDB.get(account.getUsername(), account.getPassword());
-        if(lecturer != null){
-            request.getSession().setAttribute("account", account);
-            response.sendRedirect("/PRJ_Assignment/lecture/timetable");
-        } else if(student != null){ 
-            request.getSession().setAttribute("account", account);
-            response.sendRedirect("/PRJ_Assignment/student/timetable1");
-        }
-        
-        }} catch (NullPointerException e) {
-        
+            if (account == null) {
+                response.getWriter().println("Login fail! Please input username and password");
+            } else {
+//        LecturerDBContext lecDB = new LecturerDBContext();
+//        Lecturer lecturer = lecDB.get(account.getUsername(), account.getPassword());
+//        StudentDBContext stDB = new StudentDBContext();
+//        Student student = stDB.get(account.getUsername(), account.getPassword());
+
+                ArrayList<Role> role = account.getRoles();
+                for (Role r : role) {
+                    if (r.getId() == 1) {
+                        request.getSession().setAttribute("account", account);
+                        response.sendRedirect("/PRJ_Assignment/student/timetable1");
+                    } else if (r.getId() == 2) {
+                        request.getSession().setAttribute("account", account);
+                        response.sendRedirect("/PRJ_Assignment/lecture/timetable");
+                    }
+                }
+//        if(lecturer != null){
+//            request.getSession().setAttribute("account", account);
+//            response.sendRedirect("/PRJ_Assignment/lecture/timetable");
+//        } else if(student != null){ 
+//            request.getSession().setAttribute("account", account);
+//            response.sendRedirect("/PRJ_Assignment/student/timetable1");
+//        }
+
+            }
+        } catch (NullPointerException e) {
+
 //            request.getRequestDispatcher("/lecture/timetable").forward(request, response);
             // tao 1 bang account_lecture va acoount_student 
 //            response.getWriter().println("login successful!");
-
         }
-        
+
     }
 
     /**

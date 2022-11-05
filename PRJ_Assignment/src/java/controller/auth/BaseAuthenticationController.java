@@ -13,42 +13,34 @@ import model.Account;
 
 /**
  *
- * @author admin
+ * @author sonnt
  */
 public abstract class BaseAuthenticationController extends HttpServlet {
 
     private boolean isAuthenticated(HttpServletRequest req) {
         return req.getSession().getAttribute("account") != null;
     }
-
+    
+    protected abstract void processPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException;
+    protected abstract void processGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException;
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (isAuthenticated(req)) {
-            //do business
-            Account account = (Account) req.getSession().getAttribute("account");
-            doPost(req, resp, account);
+            //code business
+            processPost(req, resp);
         } else {
             resp.getWriter().println("access denied!");
         }
     }
-
-    private void doPost(HttpServletRequest req, HttpServletResponse resp, Account account) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (isAuthenticated(req)) {
-            Account account = (Account) req.getSession().getAttribute("account");
-            doGet(req, resp, account);
+            //code business
+            processGet(req, resp);
         } else {
             resp.getWriter().println("access denied!");
         }
-    }
-
-    private void doGet(HttpServletRequest req, HttpServletResponse resp, Account account) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }
