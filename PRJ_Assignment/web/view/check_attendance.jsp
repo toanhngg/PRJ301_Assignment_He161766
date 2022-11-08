@@ -13,8 +13,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <link href="styleviewFAP3.css" rel="stylesheet">
-           <style>
+
+        <style>
             .container{
                 margin-left: 150px;
                 margin-right: 150px;
@@ -138,12 +138,12 @@
                 </div>
             </div>
             <h2>
-            Take attendance for Group: ${requestScope.ses.group.name} <br/>
-            Subject: ${requestScope.ses.group.subject.name} <br/>
-            Lecturer: ${requestScope.ses.lecturer.name} <br/>
-            Room: ${requestScope.ses.room.name} <br/>
-            Date: ${requestScope.ses.date} - ${requestScope.ses.timeslot.description}<br/>
-            Attended: <span style="color: red;"> ${requestScope.ses.attandated?"Yes":"No"} </span>
+                Take attendance for Group: ${requestScope.ses.group.name} <br/>
+                Subject: ${requestScope.ses.group.subject.name} <br/>
+                Lecturer: ${requestScope.ses.lecturer.name} <br/>
+                Room: ${requestScope.ses.room.name} <br/>
+                Date: ${requestScope.ses.date} - ${requestScope.ses.timeslot.description}<br/>
+                Attended: <span style="color: red;"> ${requestScope.ses.attandated?"Yes":"No"} </span>
             </h2>
             <form action="check" method="POST">
                 <input type="hidden" name="sesid" value="${param.id}"/>
@@ -179,30 +179,34 @@
                     </c:forEach>
 
                 </table>
-                <input type="submit" value="Save" onclick="reportStudent(${s.id})"/>
-               
-                
-      </form>
+                <!--<input type="submit" value="Save" onclick="reportStudent(${s.id})"/>-->
+                <%--<c:forEach items="${requestScope.sessions}" var="ses">--%>
+                    <input type="submit" value="Save"/>
+              
+                    <%--</c:forEach>--%>
+                </form>
 
 
-            <div id="last2">
-                <div>
-                    <br />
-                    <b>Mọi góp ý, thắc mắc xin liên hệ: </b><span>Phòng dịch vụ sinh viên</span>: Email: <a href="mailto:dichvusinhvien@fe.edu.vn">dichvusinhvien@fe.edu.vn</a>.
-                    Điện thoại: <span> </span>
-                    <br />
-                </div>                         
-                </td>
-                </tr>
-                <tr>
-                    <td id="last3">
-                        <p style="text-align: center">
-                            © Powered by <a href="http://fpt.edu.vn" target="_blank">FPT University</a>&nbsp;|&nbsp;
-                            <a href="http://cms.fpt.edu.vn/" target="_blank">CMS</a>&nbsp;|&nbsp; <a href="http://library.fpt.edu.vn" target="_blank">library</a>&nbsp;|&nbsp; <a href="http://library.books24x7.com" target="_blank">books24x7</a>
-                        </p>     </td>  
-                </tr>
+
+
+                <div id="last2">
+                    <div>
+                        <br />
+                        <b>Mọi góp ý, thắc mắc xin liên hệ: </b><span>Phòng dịch vụ sinh viên</span>: Email: <a href="mailto:dichvusinhvien@fe.edu.vn">dichvusinhvien@fe.edu.vn</a>.
+                        Điện thoại: <span> </span>
+                        <br />
+                    </div>                         
+                    </td>
+                    </tr>
+                    <tr>
+                        <td id="last3">
+                            <p style="text-align: center">
+                                © Powered by <a href="http://fpt.edu.vn" target="_blank">FPT University</a>&nbsp;|&nbsp;
+                                <a href="http://cms.fpt.edu.vn/" target="_blank">CMS</a>&nbsp;|&nbsp; <a href="http://library.fpt.edu.vn" target="_blank">library</a>&nbsp;|&nbsp; <a href="http://library.books24x7.com" target="_blank">books24x7</a>
+                            </p>     </td>  
+                    </tr>
+                </div>
             </div>
         </div>
-    </div>
-</body>
+    </body>
 </html>

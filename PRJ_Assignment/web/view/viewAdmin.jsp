@@ -1,6 +1,6 @@
 <%-- 
-    Document   : viewFAP
-    Created on : Oct 9, 2022, 2:19:42 PM
+    Document   : viewAdmin
+    Created on : Nov 7, 2022, 11:33:46 PM
     Author     : admin
 --%>
 
@@ -12,16 +12,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <!--<link href="styleviewFAP1.css" rel="stylesheet">-->
-        <script>
-            function checkStudent(id)
-            {
-                var result = confirm("Check Attendance");
-                if (result)
-                    window.location.href = "check?id=" + id;
-            }
-        </script>
-        <style>
+    <style>
             .container{
                 margin-left: 120px;
                 margin-right: 120px;
@@ -136,7 +127,7 @@
             #time{
                 background-color: #5cb85c;
                 display: inline;
-                padding: 0.2em 0.5em 0.2em;
+                padding: 0.2em 0.6em 0.3em;
                 font-size: 75%;
                 font-weight: 700;
                 line-height: 1;
@@ -168,25 +159,8 @@
                 text-decoration: none;
             }
             .option{
-                margin-left: 500px;
-            }
-            .report1{
-                background-color: #777;
-                display: inline;
-                padding: 0.1em 0.5em 0.2em;
-                font-size: 75%;
-                font-weight: 700;
-                line-height: 1;
-                color: #fff;
-                text-align: center;
-                white-space: nowrap;
-                vertical-align: baseline;
-                border-radius: 0.25em;
-            }
-                /*margin-right: auto;*/
-/*                display: flex;
-                justify-content: space-between;
-                align-items: center;*/
+                margin-left: auto;
+                margin-right: auto;
 
             </style>
         </head>
@@ -220,7 +194,7 @@
                             <span id="homee"><a href="">Home</a>&nbsp;|&nbsp;<b>View Schedule</b></span>
                             <div class="choose">
                                 <a href="">
-                                    <span>${sessionScope.account.username}</span></a> | <a href="../logout">logout</a> |
+                                    <span>${sessionScope.account.username}</span></a> | <a href="">logout</a> |
                                 <span>CAMPUS: FPTU-Hòa Lạc</span>
                             </div>
                         </div>
@@ -230,7 +204,7 @@
                                     <div class="content1">
                                         <div class="nd">
 
-                                            <h2>Lecture timetable of week</h2>
+                                            <h2>Lecture of week</h2>
                                             <div>
                                                 <p>
                                                     Các phòng bắt đầu bằng AL thuộc tòa nhà Alpha. VD: AL...<br />
@@ -242,22 +216,20 @@
                                             </div>
                                         </div>
                                         <div class="option">
-                                            <!--Lecturer: <input type="text" readonly="readonly" value="${sessionScope.account.username}"/>-->
-                                            <form action="timetable" method="GET">
-                                                <input type="hidden" name="username" value="${sessionScope.account.username}"/>
+                                            <form action="admin" method="POST">
+                                               Lecture: <input type="type" name="username"/>
                                                 From:<input type="date" name="from" value="${requestScope.from}"/>
                                                 To: <input type="date" name="to" value="${requestScope.to}"/>
                                                 <input type="submit" value="View"/> 
                                             </form>
                                         </div>
-
-                                        </br>
+                                                
 
                                         <table class="timetable">
                                             <tr >
                                                 <th rowspan="2" class="date">
-                                                    Slot 
-                                                </th>
+                                                Slot 
+                                            </th>
                                                 <c:forEach items="${requestScope.dates}" var="d"> 
                                                     <th class="date">${helper.getDayNameofWeek(d)}</th>
                                                     </c:forEach>
@@ -267,37 +239,28 @@
                                                     <th class="date">${d}</th>
                                                     </c:forEach>
                                             </tr>
-                                            </tr>
                                             <c:forEach items="${requestScope.slots}" var="slot">
 
                                                 <tr>
                                                     <td>${slot.nameSlot}</td>
                                                     <c:forEach items="${requestScope.dates}" var="d">
                                                         <td>
-                                                            <c:forEach items="${requestScope.sessions}" var="ses">
+                                                            <c:forEach items="${requestScope.ss}" var="ss">
                                                                 <c:choose>
-                                                                    <c:when test="${helper.compare(ses.date,d) eq 0 and (ses.timeslot.id eq slot.id)}">
-
-                                                                        <a href="#" onclick="checkStudent(${ses.id})"> ${ses.group.name}-${ses.group.subject.name}</a>
-<!--                                                                        <a href="report?gid=${ses.group.id}&lid=${ses.lecturer.id}&subid=${ses.group.subject.id}&sesid=${ses.id}">
-                                                                            Report
-                                                                        </a>-->
+                                                                    <c:when test="${helper.compare(ss.date,d) eq 0 and (ss.timeslot.id eq slot.id)}">
+                                                                        <a>${ss.group.name}-${ss.group.subject.name}</a>
                                                                         <br/> at
-                                                                        ${ses.room.name}
+                                                                        ${ss.room.name}
                                                                         </br>
+                                                                        <div id="time">${slot.description}</div>
                                                                         <c:choose>
                                                                             <%-- Khi tham số color == 'red' --%>
-                                                                            <c:when test="${ses.attandated}">
-                                                                                <a class="report1" href="report?gid=${ses.group.id}&lid=${ses.lecturer.id}&subid=${ses.group.subject.id}&sesid=${ses.id}">
-                                                                            Report
-                                                                        </a>
+                                                                            <c:when test="${ss.attandated}">
                                                                                 (<font color=Green>Attended</font>)
-                                                                                
                                                                             </c:when>  
 
                                                                             <%-- Khi tham số color == 'blue' --%>
-                                                                            <c:when test="${!ses.attandated}">
-                                                                              
+                                                                            <c:when test="${!ss.attandated}">
                                                                                 (<font color=red>Absent</font>)
                                                                             </c:when>  
 
@@ -306,22 +269,12 @@
                                                                                 (<font color=red>Not yet</font>)
                                                                             </c:otherwise>
                                                                         </c:choose>
-                                                                        <div id="time">${slot.description}</div>
-
                                                                     </c:when> 
                                                                     <%-- Các trường hợp khác --%>
                                                                     <c:otherwise> 
 
                                                                     </c:otherwise>
                                                                 </c:choose>
-
-                                                                <%--<c:if test="${ses.attandated}">--%>
-                                                                <!--<img src="../img/male-icon.png" alt=""/>-->
-                                                                <%--</c:if>--%>
-                                                                <%--<c:if test="${!ses.attandated}">--%>
-                                                                <!--<img src="../img/female-icon.png" alt=""/>-->
-                                                                <%--</c:if>--%>
-                                                                <%--</c:if>--%>
 
                                                             </c:forEach>
 
@@ -335,7 +288,7 @@
                                                 <p>
                                                     <b>More note / Chú thích thêm</b>:
                                                 </p>
-                                                <div><ul><li>(<font color='green'>attended</font>): ${sessionScope.account.username} had attended this activity / ${sessionScope.account.username} đã tham gia hoạt động này</li><li>(<font color='red'>absent</font>): ${sessionScope.account.username} had NOT attended this activity / ${sessionScope.account.username} đã vắng mặt buổi này</li>   <li>(-): no data was given / chưa có dữ liệu</li> </ul></div>
+                                                <div><ul><li>(<font color='green'>attended</font>): AnhNTHE161766 had attended this activity / Nguyễn Tố Anh đã tham gia hoạt động này</li><li>(<font color='red'>absent</font>): AnhNTHE161766 had NOT attended this activity / Nguyễn Tố Anh đã vắng mặt buổi này</li>   <li>(-): no data was given / chưa có dữ liệu</li> </ul></div>
                                                 <p>
                                                 </p>
                                             </div>

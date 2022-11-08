@@ -12,30 +12,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <style>
-/*            .from{
-                width: 0%;
-                text-align: center;
-                margin-top: 300px;
-                                 margin-left: 60px;
-            }*/
-/*            .body1{
-                display:flex;
-            }*/
-            /*
-            #click{
-                background-color: coral;
-                border-radius: 2px;
-                text-decoration: none;
-                color: black;
-                font-weight: bold;
-                padding: 9px;
-                margin-left: 100px;
-                                margin-bottom: 100px;
-            }
-            fieldset{
-                margin-top: 30px;
-                margin-left: 38px;
-            }*/
             .inputs{
                 overflow: hidden;
                 margin-right: 130px;
@@ -43,9 +19,8 @@
             }
 
             input{
-                width: 100%;
                 padding: 10px;
-                margin-top: 25px;
+                /*margin-top: 25px;*/
                 font-size: 16px;
                 border: none;
                 outline: none;
@@ -67,17 +42,12 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-
-                /*                input{
-                                    margin: 0;
-                                    margin-right: 7px;
-                                    width: auto;
-                                }*/
             }
 
 
 
             .button1 {
+                width: 100%;
                 float: right;
                 color: #fff;
                 font-size: 16px;
@@ -89,78 +59,57 @@
                 box-shadow: 0px 4px 20px 0px #49c628a6;
                 background-image: linear-gradient( 135deg, #70F570 10%, #49C628 100%);
             }
-            label {
-
-                display: block;
-                position: relative;
-                margin-left: 30px;
-            }
-            label::before{
-                content:' \f00c';
-                position: absolute;
-                font-family: FontAwesome;
-                background: transparent;
-
-                border: 3px solid #70F570;
-                border-radius: 4px;
-                color: transparent;
-                left: -30px;
-
-                transition: all 0.2s linear;
-            }
-
-            label:hover::before{
-                font-family: FontAwesome;
-                content:' \f00c';
-                color: #fff;
-                cursor: pointer;
-                background: #70F570;
-            }
-
-            label:hover::before .text-checkbox{
-                background: #70F570;
-            }
-            // label span.text-checkbox:hover{background: #70F570;}
-
-
-            label span.text-checkbox {
-                display: inline-block;
-                height: auto;
-                position: relative;
-                cursor: pointer;
-                transition: all 0.2s linear;
-            }
-            label input[type="checkbox"] {
-                display: none;
-            }
-          
         </style>
     </head>
     <body>
+        <%
+        Cookie[] listCookie = request.getCookies();
+        String user = "";
+        String pass = "";
+            int co = 0;
+            if(listCookie != null){
+        while(co < listCookie.length){
+              if(listCookie[co].getName().equals("user")){
+               user = listCookie[co].getValue();
+        }
+              if(listCookie[co].getName().equals("pass")){
+               pass = listCookie[co].getValue();
+        }
+        co++;
+        }
+        }
+        %>
         <div class="form">
-                <img style="height: 650px; width: 60%;" src="https://tostemvietnam.com/wp-content/uploads/2021/10/FPT-University-8.jpg"/> 
-         
+            <img style="height: 650px; width: 60%;" src="https://tostemvietnam.com/wp-content/uploads/2021/10/FPT-University-8.jpg"/> 
+
 
             <div>
                 <form class="inputs" action="login" method="POST" >
-                    <input type="text" placeholder="user name"name="username">
+
+                    <input type="text" placeholder="username"name="username" value="<%out.print(user);%>">
                     <br>
-                    <input type="password" placeholder="password" name="password">
+                    ${usermessage}
+                    <br>
+                    <input type="password" placeholder="password" name="password" value="<%out.print(pass);%>">
+                    <br>
+                    ${passmessage}
 
 
                     <br><br>
 
+
                     <div class="remember-me--forget-password">
                         <!-- Angular -->
                         <label>
-                            <input type="checkbox" name="item" checked/>
-                            <span class="text-checkbox">Remember me</span>
+                            <input class="text-checkbox" type="checkbox" name="remember_information" value="ok" checked />            
+                            Remember me
                         </label>
 
                     </div>
 
                     <br>
                     <input class="button1" type="submit" value="LOGIN">
+                    ${loginmessage}
                     </div>
                 </form>    
             </div>

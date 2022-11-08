@@ -1,9 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-<!--    <servlet>
+    <!--    <servlet>
         <servlet-name>Timetable_Student</servlet-name>
         <servlet-class>controller.Timetable_Student</servlet-class>
     </servlet>-->
+    <filter>
+        <filter-name>LoginFilter</filter-name>
+        <filter-class>Filter.LoginFilter</filter-class>
+    </filter>
+    <filter>
+        <filter-name>LoginFilterCheck</filter-name>
+        <filter-class>Filter.LoginFilterCheck</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <servlet-name>LoginController</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>LoginFilterCheck</filter-name>
+        <servlet-name>LoginController</servlet-name>
+    </filter-mapping>
     <servlet>
         <servlet-name>LoginController</servlet-name>
         <servlet-class>controller.auth.LoginController</servlet-class>
@@ -36,11 +52,15 @@
         <servlet-name>HomeController</servlet-name>
         <servlet-class>controller.home.HomeController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Admin_Controller</servlet-name>
+        <servlet-class>controller.Admin_Controller</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeController</servlet-name>
         <url-pattern>/home</url-pattern>
     </servlet-mapping>
-<!--    <servlet-mapping>
+    <!--    <servlet-mapping>
         <servlet-name>Timetable_Student</servlet-name>
         <url-pattern>/student/timetable1</url-pattern>
     </servlet-mapping>-->
@@ -60,17 +80,21 @@
         <servlet-name>Report_Attendance</servlet-name>
         <url-pattern>/lecture/report</url-pattern>
     </servlet-mapping>
-        <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>Timetable_Lecture</servlet-name>
         <url-pattern>/lecture/timetable</url-pattern>
     </servlet-mapping>
-      <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>Timetable_Student</servlet-name>
         <url-pattern>/student/timetable1</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Choose</servlet-name>
         <url-pattern>/choose</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Admin_Controller</servlet-name>
+        <url-pattern>/view/admin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

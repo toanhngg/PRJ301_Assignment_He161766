@@ -33,26 +33,26 @@ public class LecturerDBContext extends DBContext<Lecturer> {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public Lecturer get(String username, String password) {
-        try {
-            String sql = "SELECT l.lid,l.lname, a.displayname FROM Lecturer l\n"
-                    + "inner join Account a on a.username = l.username\n"
-                    + "                    WHERE a.username = ? and a.password = ?";
-            PreparedStatement stm = connection.prepareStatement(sql);
-            stm.setString(1, username);
-            stm.setString(2, password);
-            ResultSet rs = stm.executeQuery();
-            if (rs.next()) {
-                Lecturer l = new Lecturer();
-                l.setId(rs.getInt("lid"));
-                l.setName(rs.getString("lname"));
-                return l;
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(LecturerDBContext.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
-    }
+//    public Lecturer get(String username, String password) {
+//        try {
+//            String sql = "SELECT l.lid,l.lname, a.displayname FROM Lecturer l\n"
+//                    + "inner join Account a on a.username = l.username\n"
+//                    + "                    WHERE a.username = ? and a.password = ?";
+//            PreparedStatement stm = connection.prepareStatement(sql);
+//            stm.setString(1, username);
+//            stm.setString(2, password);
+//            ResultSet rs = stm.executeQuery();
+//            if (rs.next()) {
+//                Lecturer l = new Lecturer();
+//                l.setId(rs.getInt("lid"));
+//                l.setName(rs.getString("lname"));
+//                return l;
+//            }
+//        } catch (SQLException ex) {
+//            Logger.getLogger(LecturerDBContext.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return null;
+//    }
   
 
 
