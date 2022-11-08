@@ -56,6 +56,10 @@
         <servlet-name>Admin_Controller</servlet-name>
         <servlet-class>controller.Admin_Controller</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ViewAttendace</servlet-name>
+        <servlet-class>controller.ViewAttendace</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeController</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -95,6 +99,10 @@
     <servlet-mapping>
         <servlet-name>Admin_Controller</servlet-name>
         <url-pattern>/view/admin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewAttendace</servlet-name>
+        <url-pattern>/view</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

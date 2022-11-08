@@ -205,7 +205,7 @@
                                     <div class="content1">
                                         <div class="nd">
 
-                                            <h2>Lecture of week</h2>
+                                            <h2>Timetbale</h2>
                                             <div>
                                                 <p>
                                                     Các phòng bắt đầu bằng AL thuộc tòa nhà Alpha. VD: AL...<br />
@@ -256,14 +256,17 @@
                                                                         <div id="time">${slot.description}</div>
                                                                         <c:choose>
                                                                             <%-- Khi tham số color == 'red' --%>
-                                                                            <c:when test="${ss.attandated}">
+                                                                            <c:when test="${ss.attandated eq true}">
                                                                                 (<font color=Green>Attended</font>)
                                                                             </c:when>  
 
                                                                             <%-- Khi tham số color == 'blue' --%>
-                                                                            <c:when test="${!ss.attandated}">
+                                                                            <c:when test="${ss.attandated eq false}">
                                                                                 (<font color=red>Absent</font>)
-                                                                            </c:when>  
+                                                                            </c:when> 
+                                                                                <c:when test="${ss.attandated eq null}">
+                                                                                (<font color=red>Not yet</font>)
+                                                                            </c:when> 
 
                                                                             <%-- Các trường hợp khác --%>
                                                                             <c:otherwise>

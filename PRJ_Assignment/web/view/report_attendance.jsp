@@ -179,7 +179,7 @@
                             <td>NAME</td>
                             <td>% Absent</td>
                     <c:forEach items="${requestScope.group.sessions}" var="ses">
-                        <td> Slot ${ses.index}</td>
+                        <td>  Slot ${ses.index}</a></td>
                     </c:forEach>
                 </tr>
                 <c:forEach items="${requestScope.group.students}" var="std" varStatus="loop"> 
