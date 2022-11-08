@@ -159,7 +159,7 @@
                     </div>
                     <div>
                         <div  class="header2">
-                            <span id="homee"><a href="">Home</a>&nbsp;|&nbsp;<b> Groups</b></span>
+                            <span id="homee"><a href="timetable">Home</a>&nbsp;|&nbsp;<b> Groups</b></span>
                             <div class="choose">
                                 <a href="">
                                     <span>${sessionScope.account.username}</span></a> | <a href="../logout">logout</a> |

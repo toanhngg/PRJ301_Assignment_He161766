@@ -230,7 +230,7 @@
                                     <div class="content1">
                                         <div class="nd">
 
-                                            <h2>Lecture timetable of week</h2>
+                                            <h2>Timetable</h2>
                                             <div>
                                                 <p>
                                                     Các phòng bắt đầu bằng AL thuộc tòa nhà Alpha. VD: AL...<br />
