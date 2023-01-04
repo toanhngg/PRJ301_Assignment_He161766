@@ -26,11 +26,11 @@ public class ViewAttendace extends BaseRoleController {
 
     @Override
     protected void processAuthGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int sesid = Integer.parseInt(req.getParameter("id"));
-        SessionDBContext sesDB = new SessionDBContext();
-        Session ses = sesDB.get(sesid);
-        req.setAttribute("ses", ses);
-        req.getRequestDispatcher("../view/viewSlot.jsp").forward(req, resp);
+//        int sesid = Integer.parseInt(req.getParameter("id"));
+//        SessionDBContext sesDB = new SessionDBContext();
+//        Session ses = sesDB.get(sesid);
+//        req.setAttribute("ses", ses);
+//        req.getRequestDispatcher("../view/viewSlot.jsp").forward(req, resp);
     }
 
 }

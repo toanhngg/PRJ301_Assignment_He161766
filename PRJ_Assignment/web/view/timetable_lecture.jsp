@@ -298,7 +298,7 @@
                                                                             <%-- Khi tham số color == 'blue' --%>
                                                                             <c:when test="${!ses.attandated}">
                                                                               
-                                                                                (<font color=red>Absent</font>)
+                                                                                (<font color=red>Not yet</font>)
                                                                             </c:when>  
 
                                                                             <%-- Các trường hợp khác --%>

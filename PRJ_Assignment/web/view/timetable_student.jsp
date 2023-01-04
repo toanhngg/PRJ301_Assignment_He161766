@@ -292,7 +292,7 @@
                                                 <p>
                                                     <b>More note / Chú thích thêm</b>:
                                                 </p>
-                                                <div><ul><li>(<font color='green'>attended</font>): AnhNTHE161766 had attended this activity / Nguyễn Tố Anh đã tham gia hoạt động này</li><li>(<font color='red'>absent</font>): AnhNTHE161766 had NOT attended this activity / Nguyễn Tố Anh đã vắng mặt buổi này</li>   <li>(-): no data was given / chưa có dữ liệu</li> </ul></div>
+                                                <div><ul><li>(<font color='green'>attended</font>): ${sessionScope.account.username} had attended this activity / ${sessionScope.account.username} đã tham gia hoạt động này</li><li>(<font color='red'>absent</font>): AnhNTHE161766 had NOT attended this activity / Nguyễn Tố Anh đã vắng mặt buổi này</li>   <li>(-): no data was given / chưa có dữ liệu</li> </ul></div>
                                                 <p>
                                                 </p>
                                             </div>
